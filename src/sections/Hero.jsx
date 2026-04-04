@@ -17,7 +17,7 @@ function Hero() {
       <div className="max-w-7xl w-full flex items-center justify-between gap-10">
 
         {/* LEFT TEXT */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 select-none">
 
           {/* Name */}
           <motion.h1
@@ -40,23 +40,21 @@ function Hero() {
           </motion.h2>
 
           {/* Small line */}
-          {
-            showTyping && (
-              <div className="text-gray-400 max-w-lg leading-relaxed text-base font-normal mt-2">
-                <Typewriter
-                  options={{
-                    strings: [
-                      "Building scalable web applications using MERN and modern technologies.",
-                    ],
-                    autoStart: true,
-                    loop: false,
-                    delay: 30,
-                    deleteSpeed:Infinity
-                  }}
-                />
-              </div>
-            )
-          }
+          <div className="text-gray-400 max-w-lg leading-relaxed text-base font-normal mt-2 min-h-[60px]">
+            {showTyping && (
+              <Typewriter
+                options={{
+                  strings: [
+                    "Building scalable web applications using MERN and modern technologies.",
+                  ],
+                  autoStart: true,
+                  loop: false,
+                  delay: 30,
+                  deleteSpeed:Infinity
+                }}
+              />
+            )}
+          </div>
 
         </div>
 
