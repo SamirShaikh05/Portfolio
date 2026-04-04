@@ -4,3 +4,25 @@ body{
     font-family: "Inter", sans-serif;
 }
 
+/* Main typed text */
+.Typewriter {
+  display: inline;
+  letter-spacing: 0.2px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #9ca3af; /* gray-400 */
+}
+
+/* Cursor */
+.Typewriter__cursor {
+  color: #3b82f6; /* blue */
+  font-weight: 500;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+/* Smooth blinking */
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
