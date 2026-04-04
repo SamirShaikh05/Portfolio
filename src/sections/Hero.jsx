@@ -40,7 +40,7 @@ function Hero() {
           </motion.h2>
 
           {/* Small line */}
-          <div className="text-gray-400 max-w-lg leading-relaxed text-base font-normal mt-2 min-h-[60px]">
+          <div className="text-gray-400 max-w-lg leading-relaxed text-base font-normal mt-2 min-h-15">
             {showTyping && (
               <Typewriter
                 options={{
