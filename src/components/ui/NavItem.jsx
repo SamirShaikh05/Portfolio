@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const NavItem = ({ text }) => {
     const letters = text.split("");
 
     return (
-        <motion.div
+        <Motion.div
             className="relative cursor-pointer overflow-visble pt-2"
             initial="rest"
             whileHover="hover"
@@ -13,7 +13,7 @@ const NavItem = ({ text }) => {
             {/* Text */}
             <div className="flex">
                 {letters.map((letter, i) => (
-                    <motion.span
+                    <Motion.span
                         key={i}
                         className="inline-block"
                         variants={{
@@ -30,12 +30,12 @@ const NavItem = ({ text }) => {
                         }}
                     >
                         {letter}
-                    </motion.span>
+                    </Motion.span>
                 ))}
             </div>
 
             {/* Underline */}
-            <motion.div
+            <Motion.div
                 className="absolute left-0 bottom-0 h-0.5 bg-blue-500"
                 variants={{
                     rest: { width: "0%" },
@@ -45,7 +45,7 @@ const NavItem = ({ text }) => {
                     },
                 }}
             />
-        </motion.div>
+        </Motion.div>
     );
 };
 
