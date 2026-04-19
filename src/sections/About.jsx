@@ -1,6 +1,9 @@
 import { motion as Motion } from "framer-motion";
-import {SiAuth0, SiCplusplus, SiExpress, SiFramer, SiGithub, SiJavascript, SiJsonwebtokens, SiMongodb, SiNodedotjs, SiOpenjdk,
-    SiPostman, SiReact, SiRender, SiTailwindcss, SiVercel} from "react-icons/si";
+import {
+    SiAuth0, SiBootstrap, SiCplusplus, SiEjs, SiExpress, SiFramer, SiGithub, SiJavascript, SiJsonwebtokens,
+    SiMongodb, SiMongoose, SiNodedotjs, SiOpenjdk, SiPostman, SiReact, SiRedux, SiRender, SiTailwindcss,
+    SiVercel
+} from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
 function TechRail({ tech, direction = "left", duration = 35 }) {
@@ -45,29 +48,29 @@ function TechRail({ tech, direction = "left", duration = 35 }) {
 function About() {
     const tech1 = [
         { name: "React", icon: SiReact, color: "text-cyan-400" },
-        { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
-        { name: "Express", icon: SiExpress, color: "text-gray-200" },
-        { name: "MongoDB", icon: SiMongodb, color: "text-emerald-500" },
+        { name: "Redux", icon: SiRedux, color: "text-purple-400" },
+        { name: "JavaScript", icon: SiJavascript, color: "text-yellow-300" },
+        { name: "Bootstrap", icon: SiBootstrap, color: "text-violet-400" },
         { name: "Tailwind", icon: SiTailwindcss, color: "text-sky-400" },
         { name: "Framer Motion", icon: SiFramer, color: "text-pink-400" },
+        { name: "EJS", icon: SiEjs, color: "text-yellow-500" },
         { name: "VS Code", icon: VscVscode, color: "text-blue-400" },
         { name: "GitHub", icon: SiGithub, color: "text-gray-100" },
         { name: "Vercel", icon: SiVercel, color: "text-gray-100" },
-        { name: "Render", icon: SiRender, color: "text-indigo-400" },
     ];
 
     const tech2 = [
-        { name: "JavaScript", icon: SiJavascript, color: "text-yellow-300" },
-        { name: "C++", icon: SiCplusplus, color: "text-blue-500" },
-        { name: "Java", icon: SiOpenjdk, color: "text-red-400" },
+        { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
+        { name: "Express", icon: SiExpress, color: "text-gray-200" },
+        { name: "MongoDB", icon: SiMongodb, color: "text-emerald-500" },
+        { name: "Mongoose", icon: SiMongoose, color: "text-red-500" },
         { name: "REST APIs", icon: SiPostman, color: "text-orange-400" },
         { name: "OAuth", icon: SiAuth0, color: "text-orange-500" },
         { name: "JWT", icon: SiJsonwebtokens, color: "text-purple-400" },
         { name: "Postman", icon: SiPostman, color: "text-orange-400" },
-        { name: "VS Code", icon: VscVscode, color: "text-blue-400" },
-        { name: "GitHub", icon: SiGithub, color: "text-gray-100" },
-        { name: "Vercel", icon: SiVercel, color: "text-gray-100" },
         { name: "Render", icon: SiRender, color: "text-indigo-400" },
+        { name: "C++", icon: SiCplusplus, color: "text-blue-500" },
+        { name: "Java", icon: SiOpenjdk, color: "text-red-400" },
     ];
 
     return (
@@ -119,10 +122,35 @@ function About() {
                     </Motion.div>
                 </div>
 
-                {/* Tech Rails */}
-                <div className="overflow-hidden flex flex-col gap-8">
-                    <TechRail tech={tech1} duration={35} />
-                    <TechRail tech={tech2} direction="right" duration={35} />
+                {/* Tech Stack Section */}
+                <div className="flex flex-col items-center gap-6">
+
+                    {/* Header */}
+                    <Motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-center"
+                    >
+                        <h2 className="text-3xl font-semibold text-gray-100">
+                            Tech Stack
+                        </h2>
+                        <p className="text-gray-400 text-sm mt-2">
+                            Technologies I work with to build scalable and modern applications
+                        </p>
+                    </Motion.div>
+
+                    {/* Divider */}
+                    <div className="w-20 h-0.5 bg-blue-500/50 rounded-full"></div>
+
+                    {/* Rails */}
+                    <div className="w-full overflow-hidden flex flex-col gap-6 mt-4">
+
+                        <TechRail tech={tech1} duration={38} />
+
+                        <TechRail tech={tech2} direction="right" duration={42} />
+
+                    </div>
                 </div>
             </div>
         </section>
