@@ -53,7 +53,7 @@ function Projects() {
                     className="mb-10 text-center"
                 >
                     <h2 className="text-4xl font-semibold text-gray-100">Projects</h2>
-                    <div className="mx-auto mt-4 h-0.5 w-24 rounded-full bg-blue-500/60"></div>
+                    <div className="mx-auto mt-4 h-0.5 w-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
                 </Motion.div>
 
                 <Motion.div

@@ -50,7 +50,7 @@ function Hero() {
                   autoStart: true,
                   loop: false,
                   delay: 30,
-                  deleteSpeed:Infinity
+                  deleteSpeed: Infinity
                 }}
               />
             )}

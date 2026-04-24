@@ -19,9 +19,9 @@ function Navbar() {
                 </div>
 
                 {/* Icons */}
-                <div className="flex items-center gap-5 text-gray-300">
-                    <a href="https://github.com/SamirShaikh05" target="_blank" rel="noopener"><FaSquareGithub className="text-2xl hover:text-white hover:scale-110 cursor-pointer transition" /></a>
-                    <a href="https://www.linkedin.com/in/samir-shaikh-b8372a322/" target="_blank" rel="noopener"><FaLinkedin className="text-2xl hover:text-blue-500 hover:scale-110 cursor-pointer transition" /></a>
+                <div className="flex items-center gap-5 text-gray-400">
+                    <a href="https://github.com/SamirShaikh05" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition duration-200"><FaSquareGithub className="text-2xl" /></a>
+                    <a href="https://www.linkedin.com/in/samir-shaikh-b8372a322/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 hover:scale-110 transition duration-200"><FaLinkedin className="text-2xl" /></a>
                 </div>
 
             </div>

@@ -4,6 +4,16 @@ body{
     font-family: "Inter", sans-serif;
 }
 
+/* Fix Chrome / Edge autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(10, 16, 27, 0.114) inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 /* Main typed text */
 .Typewriter {
   display: inline;

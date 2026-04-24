@@ -77,14 +77,15 @@ function About() {
         <section id="about" className="min-h-screen py-24 px-6">
             <div className="max-w-7xl mx-auto flex flex-col gap-16">
                 {/* Heading */}
-                <Motion.h1
-                    initial={{ opacity: 0, y: 40 }}
+                <Motion.div
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center text-4xl font-semibold text-gray-100"
+                    transition={{ duration: 0.55, ease: "easeOut" }}
+                    className="text-center"
                 >
-                    About Me
-                </Motion.h1>
+                    <h2 className="text-4xl font-semibold text-gray-100 mb-4">About Me</h2>
+                    <div className="mx-auto h-0.5 w-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                </Motion.div>
 
                 {/* Main content */}
                 <div className="flex items-start justify-between gap-10 relative">
@@ -102,7 +103,7 @@ function About() {
                         <p className="text-gray-400 leading-relaxed">
                             I'm an Electrical Engineering student focused on full-stack development.
                             I build scalable and production-ready web applications using the MERN stack.
-                            I've solved 350+ DSA problems and continuously work on improving my problem-solving skills.
+                            I've solved 400+ DSA problems and continuously work on improving my problem-solving skills.
                         </p>
                     </Motion.div>
 
@@ -132,16 +133,14 @@ function About() {
                         transition={{ duration: 0.5 }}
                         className="text-center"
                     >
-                        <h2 className="text-3xl font-semibold text-gray-100">
+                        <h3 className="text-2xl font-semibold text-gray-100 mb-3">
                             Tech Stack
-                        </h2>
-                        <p className="text-gray-400 text-sm mt-2">
+                        </h3>
+                        <p className="text-gray-400 text-base">
                             Technologies I work with to build scalable and modern applications
                         </p>
+                        <div className="w-24 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-4"></div>
                     </Motion.div>
-
-                    {/* Divider */}
-                    <div className="w-20 h-0.5 bg-blue-500/50 rounded-full"></div>
 
                     {/* Rails */}
                     <div className="w-full overflow-hidden flex flex-col gap-6 mt-4">
