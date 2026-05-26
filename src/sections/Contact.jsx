@@ -27,7 +27,7 @@ function Contact() {
   };
 
   return (
-    <section className="py-28 px-6 relative">
+    <section id="contact" className="py-28 px-6 -scroll-mt-17 relative">
       {/* HEADER */}
       <div className="text-center mb-20">
         <motion.h2

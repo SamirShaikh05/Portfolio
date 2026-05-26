@@ -4,7 +4,7 @@ import NavItem from "../ui/NavItem";
 
 function Navbar() {
     return (
-        <nav className="w-full select-none">
+        <nav data-site-navbar className="w-full select-none">
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
                 {/* Logo */}
@@ -12,10 +12,10 @@ function Navbar() {
 
                 {/* Links */}
                 <div className="flex items-center leading-relaxed gap-10 text-md font-medium text-gray-300">
-                    <NavItem text="About" />
-                    <NavItem text="Projects" />
-                    <NavItem text="Skills" />
-                    <NavItem text="Contact" />
+                    <NavItem text="About" id="about"/>
+                    <NavItem text="Projects" id="projects"/>
+                    <NavItem text="Skills" id="skills"/>
+                    <NavItem text="Contact" id="contact"/>
                 </div>
 
                 {/* Icons */}

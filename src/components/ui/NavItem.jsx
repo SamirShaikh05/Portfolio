@@ -1,11 +1,22 @@
 import { motion as Motion } from "framer-motion";
 
-const NavItem = ({ text }) => {
+const NavItem = ({ text, id }) => {
     const letters = text.split("");
 
+    const handleClick = () => {
+        const section = document.getElementById(id);
+
+        if (!section) return;
+
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    };
     return (
         <Motion.div
-            className="relative cursor-pointer overflow-visble pt-2"
+            onClick={handleClick}
+            className="relative cursor-pointer overflow-visible pt-2"
             initial="rest"
             whileHover="hover"
             animate="rest"

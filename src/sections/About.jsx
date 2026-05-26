@@ -74,7 +74,7 @@ function About() {
     ];
 
     return (
-        <section id="about" className="min-h-screen py-24 px-6">
+        <section id="about" className="min-h-screen -scroll-mt-10 py-24 px-6">
             <div className="max-w-7xl mx-auto flex flex-col gap-16">
                 {/* Heading */}
                 <Motion.div
