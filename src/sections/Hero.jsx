@@ -14,13 +14,13 @@ function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
+    <section className="relative -mt-28 min-h-screen flex items-center justify-center overflow-hidden px-6 pt-28">
       <div className="absolute inset-0 z-0">
         <DotField
           dotRadius={2.2}
           dotSpacing={18}
           bulgeStrength={40}
-          glowRadius={140}
+          glowRadius={0}
           sparkle={false}
           waveAmplitude={0}
           cursorRadius={300}
