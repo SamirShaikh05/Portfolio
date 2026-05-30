@@ -15,7 +15,12 @@ function Hero() {
 
   return (
     <section className="relative -mt-28 min-h-screen flex items-center justify-center overflow-hidden px-6 pt-28">
-      <div className="absolute inset-0 z-0">
+      <Motion.div
+        initial={{ opacity: 0, scale: 1.02 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
+        className="absolute inset-0 z-0"
+      >
         <DotField
           dotRadius={2.2}
           dotSpacing={18}
@@ -30,7 +35,7 @@ function Hero() {
           gradientTo="rgba(59,130,246,0.20)"
           glowColor="#2563EB"
         />
-      </div>
+      </Motion.div>
       <div className="relative z-10 max-w-7xl w-full flex items-center justify-between gap-10">
 
         {/* LEFT TEXT */}
