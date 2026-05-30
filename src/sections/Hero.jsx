@@ -1,6 +1,7 @@
 import { motion as Motion } from "framer-motion";
 import Typewriter from 'typewriter-effect'
 import { useState, useEffect } from "react";
+import DotField from "../components/ui/DotField";
 
 function Hero() {
   const [showTyping, setShowTyping] = useState(false);
@@ -13,8 +14,24 @@ function Hero() {
   }, [])
 
   return (
-    <section className="min-h-[90vh] flex items-center justify-center px-6">
-      <div className="max-w-7xl w-full flex items-center justify-between gap-10">
+    <section className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <DotField
+          dotRadius={2.2}
+          dotSpacing={18}
+          bulgeStrength={40}
+          glowRadius={140}
+          sparkle={false}
+          waveAmplitude={0}
+          cursorRadius={300}
+          cursorForce={0.05}
+          bulgeOnly
+          gradientFrom="rgba(59,130,246,0.35)"
+          gradientTo="rgba(59,130,246,0.20)"
+          glowColor="#2563EB"
+        />
+      </div>
+      <div className="relative z-10 max-w-7xl w-full flex items-center justify-between gap-10">
 
         {/* LEFT TEXT */}
         <div className="flex flex-col gap-4 select-none">
