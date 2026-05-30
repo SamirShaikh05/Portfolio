@@ -88,7 +88,7 @@ function Hero() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute w-60 h-60 rounded-full bg-linear-to-r from-blue-500 via-blue-400 to-blue-600 blur-3xl opacity-30">
+            className="absolute w-50 h-50 rounded-full bg-linear-to-r from-blue-500 via-blue-400 to-blue-600 blur-3xl opacity-30">
           </Motion.div>
 
           {/* Image */}
