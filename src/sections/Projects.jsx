@@ -43,7 +43,7 @@ const containerVariants = {
 
 function Projects() {
     return (
-        <section id="projects" className="px-6 py-24 -scroll-mt-20">
+        <section id="projects" className="px-6 py-15 -scroll-mt-20">
             <div className="mx-auto flex w-full max-w-7xl flex-col items-center">
                 <Motion.div
                     initial={{ opacity: 0, y: 24 }}
