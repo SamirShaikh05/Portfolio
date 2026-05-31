@@ -5,6 +5,7 @@ import {
     SiVercel
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
+import Orb from '../components/ui/Orb'
 
 function TechRail({ tech, direction = "left", duration = 35 }) {
     const railGroup = [...tech, ...tech];
@@ -74,8 +75,17 @@ function About() {
     ];
 
     return (
-        <section id="about" className="min-h-screen -scroll-mt-10 py-24 px-6">
-            <div className="max-w-7xl mx-auto flex flex-col gap-16">
+        <section id="about" className="relative min-h-screen -scroll-mt-10 py-24 px-6">
+            <div className="absolute inset-0 pointer-events-none">
+                <Orb
+                    hoverIntensity={2}
+                    rotateOnHover
+                    hue={0}
+                    forceHoverState={false}
+                    backgroundColor="#000000"
+                />
+            </div>
+            <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-16">
                 {/* Heading */}
                 <Motion.div
                     initial={{ opacity: 0, y: 24 }}
@@ -88,7 +98,7 @@ function About() {
                 </Motion.div>
 
                 {/* Main content */}
-                <div className="flex items-start justify-between gap-10 relative">
+                <div className="relative flex flex-col items-start justify-between gap-10 md:flex-row">
                     {/* Vertical line */}
                     <div className="absolute left-1/2 top-0 h-full w-px bg-blue-500/30 hidden md:block"></div>
 
@@ -97,7 +107,7 @@ function About() {
                         initial={{ opacity: 0, x: -60 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="w-full md:w-1/2 pr-6"
+                        className="w-full md:w-1/2 md:pr-6"
                     >
                         <h2 className="text-2xl font-semibold text-blue-500 mb-4">Who I Am</h2>
                         <p className="text-gray-400 leading-relaxed">
@@ -112,7 +122,7 @@ function About() {
                         initial={{ opacity: 0, x: 60 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="w-full md:w-1/2 pl-6"
+                        className="w-full md:w-1/2 md:pl-6"
                     >
                         <h2 className="text-2xl font-semibold text-blue-500 mb-4">What I Do</h2>
                         <p className="text-gray-400 leading-relaxed">

@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body{
     font-family: "Inter", sans-serif;
 }
@@ -35,4 +43,25 @@ textarea:-webkit-autofill {
 @keyframes blink {
   0%, 50%, 100% { opacity: 1; }
   25%, 75% { opacity: 0; }
+}
+
+
+@keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.meteor {
+  animation: meteor 5s linear infinite;
 }
