@@ -13,7 +13,7 @@ function Footer() {
                 {/* Top Section: Branding & Links */}
                 <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
                     <div className="text-center md:text-left">
-                        <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                        <h2 className="text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                             Samir Jamil Shaikh
                         </h2>
                         <p className="text-gray-500 mt-2 text-sm max-w-xs">
