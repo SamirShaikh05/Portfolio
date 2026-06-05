@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import Profiles from "../components/ui/Profiles";
 
 function Contact() {
   const [status, setStatus] = useState("");
@@ -66,14 +66,7 @@ function Contact() {
           </p>
 
           {/* Socials */}
-          <div className="flex gap-5 mt-6 text-2xl text-gray-400">
-            <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noreferrer" className="hover:text-white transition">
-              <FaGithub />
-            </a>
-            <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer" className="hover:text-blue-500 transition">
-              <FaLinkedin />
-            </a>
-          </div>
+          <Profiles className="mt-6 text-2xl" iconClassName="text-2xl" linkClassName="p-2" />
         </motion.div>
 
         {/* RIGHT SIDE FORM */}

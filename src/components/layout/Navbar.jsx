@@ -1,6 +1,5 @@
-import { FaSquareGithub } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa";
 import NavItem from "../ui/NavItem";
+import Profiles from "../ui/Profiles";
 
 function Navbar() {
     return (
@@ -20,11 +19,7 @@ function Navbar() {
                     <NavItem text="Contact" id="contact" />
                 </div>
 
-                {/* Icons */}
-                <div className="flex shrink-0 items-center gap-4 text-gray-400 sm:gap-5">
-                    <a href="https://github.com/SamirShaikh05" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition duration-200"><FaSquareGithub className="text-2xl" /></a>
-                    <a href="https://www.linkedin.com/in/samir-shaikh-b8372a322/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 hover:scale-110 transition duration-200"><FaLinkedin className="text-2xl" /></a>
-                </div>
+                <Profiles />
 
             </div>
         </nav>

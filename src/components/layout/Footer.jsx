@@ -1,4 +1,5 @@
-import { FaGithub, FaLinkedin, FaTwitter, FaArrowUp } from "react-icons/fa";
+import { FaArrowUp } from "react-icons/fa";
+import Profiles from "../ui/Profiles";
 
 function Footer() {
     const scrollToTop = () => {
@@ -27,14 +28,7 @@ function Footer() {
                         <a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a>
                     </nav>
 
-                    <div className="flex gap-5">
-                        <a href="https://github.com/SamirShaikh05" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-xl transition-all hover:-translate-y-1">
-                            <FaGithub />
-                        </a>
-                        <a href="https://www.linkedin.com/in/samir-shaikh-b8372a322/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 text-xl transition-all hover:-translate-y-1">
-                            <FaLinkedin />
-                        </a>
-                    </div>
+                    <Profiles className="text-xl" iconClassName="text-xl" linkClassName="p-2" />
                 </div>
 
                 {/* Middle Section: Back to Top */}
