@@ -55,7 +55,7 @@ function Skills() {
     return (
         <section id="skills" className="py-20 px-6 -scroll-mt-17 relative overflow-hidden">
             {/* Background Glow (Matches your hero section style) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full -z-10" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-blue-600/10 blur-[120px] rounded-full -z-10" />
 
             <div className="max-w-7xl mx-auto">
                 {/* Heading Section */}
@@ -84,7 +84,7 @@ function Skills() {
                             transition={{ duration: 0.5, delay: i * 0.1 }}
                             className="group relative"
                         >
-                            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500"></div>
+                            <div className="absolute -inset-0.5 bg-linear-to-r from-blue-500 to-cyan-500 rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500"></div>
 
                             <div className="relative bg-[#0d1117]/80 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 h-full transition-all duration-300 group-hover:border-gray-700">
                                 <div className="flex items-center gap-3 mb-6">

@@ -42,11 +42,11 @@ function Contact() {
           Let’s connect and discuss opportunities, ideas, or collaborations.
         </p>
 
-        <div className="w-24 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+        <div className="w-24 h-0.5 bg-linear-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
       </div>
 
       {/* BACKGROUND GLOW */}
-      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] -translate-x-1/2 -translate-y-1/2 -z-10 rounded-full" />
+      <div className="absolute top-1/2 left-1/2 w-150 h-150 bg-blue-500/10 blur-[150px] -translate-x-1/2 -translate-y-1/2 -z-10 rounded-full" />
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 

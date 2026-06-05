@@ -30,9 +30,9 @@ export default function Meteors({
                 <span
                     key={idx}
                     style={style}
-                    className={`meteor absolute pointer-events-none size-[2px] rounded-full bg-slate-400 ${className}`}
+                    className={`meteor absolute pointer-events-none size-0.5 rounded-full bg-slate-400 ${className}`}
                 >
-                    <div className="absolute top-1/2 -z-10 h-px w-16 -translate-y-1/2 bg-gradient-to-r from-slate-400 to-transparent" />
+                    <div className="absolute top-1/2 -z-10 h-px w-16 -translate-y-1/2 bg-linear-to-r from-slate-400 to-transparent" />
                 </span>
             ))}
         </>

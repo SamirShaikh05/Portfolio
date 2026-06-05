@@ -123,7 +123,7 @@ function About() {
                     className="text-center"
                 >
                     <h2 className="text-4xl font-semibold text-gray-100 mb-4">About Me</h2>
-                    <div className="mx-auto h-0.5 w-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                    <div className="mx-auto h-0.5 w-24 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full"></div>
                 </Motion.div>
 
                 {/* Main content */}
@@ -133,10 +133,10 @@ function About() {
                         initial={{ opacity: 0, x: -60 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="rounded-3xl border border-blue-500/15 bg-gradient-to-b from-slate-900/60 to-slate-950/40 backdrop-blur-xl
+                        className="rounded-3xl border border-blue-500/15 bg-linear-to-b from-slate-900/60 to-slate-950/40 backdrop-blur-xl
                         p-6 shadow-[0_0_40px_rgba(37,99,235,0.08)] hover:border-blue-500/30 hover:shadow-[0_0_50px_rgba(37,99,235,0.15)] hover:-translate-y-1
                         transition-all duration-300">
-                        <h3 className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-cyan-400
+                        <h3 className="text-2xl font-semibold bg-linear-to-r from-blue-400 to-cyan-400
                             bg-clip-text text-transparent mb-4">
                             Who I Am
                         </h3>
@@ -149,12 +149,12 @@ function About() {
                             and continuous learning.
                         </p>
                         <div className="flex gap-3 mt-6 flex-wrap">
-                            <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/15 to-cyan-500/15
+                            <span className="px-4 py-1.5 rounded-full bg-linear-to-r from-blue-500/15 to-cyan-500/15
                                 border border-blue-500/20 text-blue-300 text-sm font-medium backdrop-blur-sm">
                                 500+ DSA Problems
                             </span>
 
-                            <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/15 to-blue-500/15
+                            <span className="px-4 py-1.5 rounded-full bg-linear-to-r from-cyan-500/15 to-blue-500/15
                                 border border-cyan-500/20 text-cyan-300 text-sm font-medium backdrop-blur-sm">
                                 Full-Stack MERN
                             </span>
@@ -166,10 +166,10 @@ function About() {
                         initial={{ opacity: 0, x: 60 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="rounded-3xl border border-blue-500/15 bg-gradient-to-b from-slate-900/60 to-slate-950/40 backdrop-blur-xl
+                        className="rounded-3xl border border-blue-500/15 bg-linear-to-b from-slate-900/60 to-slate-950/40 backdrop-blur-xl
                         p-6 shadow-[0_0_40px_rgba(37,99,235,0.08)] hover:border-blue-500/30 hover:shadow-[0_0_50px_rgba(37,99,235,0.15)] hover:-translate-y-1
                         transition-all duration-300">
-                        <h3 className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-cyan-400
+                        <h3 className="text-2xl font-semibold bg-linear-to-r from-blue-400 to-cyan-400
                             bg-clip-text text-transparent mb-4">
                             What I Do
                         </h3>
@@ -183,12 +183,12 @@ function About() {
                         </p>
                         <div className="flex gap-3 mt-6 flex-wrap">
 
-                            <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/15 to-cyan-500/15
+                            <span className="px-4 py-1.5 rounded-full bg-linear-to-r from-blue-500/15 to-cyan-500/15
                                 border border-blue-500/20 text-blue-300 text-sm font-medium backdrop-blur-sm">
                                 4+ Production Projects
                             </span>
 
-                            <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/15 to-blue-500/15
+                            <span className="px-4 py-1.5 rounded-full bg-linear-to-r from-cyan-500/15 to-blue-500/15
                                 border border-cyan-500/20 text-cyan-300 text-sm font-medium backdrop-blur-sm">
                                 Open to Internships
                             </span>
@@ -213,23 +213,23 @@ function About() {
                         <p className="text-gray-400 text-sm">
                             Technologies I work with to build scalable and modern applications
                         </p>
-                        <div className="w-24 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-4"></div>
+                        <div className="w-24 h-0.5 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-4"></div>
                     </Motion.div>
 
                     {/* Rails */}
                     <div className="relative w-full overflow-hidden">
                         <TechRail tech={tech1} duration={38} />
 
-                        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-[#020817] to-transparent pointer-events-none" />
+                        <div className="absolute left-0 top-0 h-full w-24 bg-linear-to-r from-[#020817] to-transparent pointer-events-none" />
 
-                        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-[#020817] to-transparent pointer-events-none" />
+                        <div className="absolute right-0 top-0 h-full w-24 bg-linear-to-l from-[#020817] to-transparent pointer-events-none" />
                     </div>
                     <div className="relative w-full overflow-hidden">
                         <TechRail tech={tech2} direction="right" duration={42} />
 
-                        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-[#020817] to-transparent pointer-events-none" />
+                        <div className="absolute left-0 top-0 h-full w-24 bg-linear-to-r from-[#020817] to-transparent pointer-events-none" />
 
-                        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-[#020817] to-transparent pointer-events-none" />
+                        <div className="absolute right-0 top-0 h-full w-24 bg-linear-to-l from-[#020817] to-transparent pointer-events-none" />
                     </div>
                 </div>
             </div>
