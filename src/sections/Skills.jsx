@@ -5,6 +5,7 @@ import {
     SiPostman, SiVercel, SiRender, SiSocketdotio, SiCplusplus, SiJsonwebtokens
 } from "react-icons/si";
 import { FaJava, FaCode, FaServer, FaDatabase, FaTools } from "react-icons/fa";
+import ShapeGrid from '../components/ui/ShapeGrid.jsx';
 
 function Skills() {
     const skills = [
@@ -53,11 +54,24 @@ function Skills() {
     ];
 
     return (
-        <section id="skills" className="py-20 px-6 -scroll-mt-17 relative overflow-hidden">
+        <section id="skills" className="relative min-h-screen py-20 px-6 -scroll-mt-17 overflow-hidden">
             {/* Background Glow (Matches your hero section style) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-blue-600/10 blur-[120px] rounded-full -z-10" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-blue-600/10 blur-[120px] rounded-full -z-30" />
+            <div className="absolute inset-0 z-1 pointer-events-none">
+                <div className="h-full w-full">
+                    <ShapeGrid
+                        speed={0.25}
+                        squareSize={42}
+                        direction="diagonal"
+                        borderColor="#1E293B"
+                        hoverFillColor="#1E293B"
+                        shape="square"
+                        hoverTrailAmount={0}
+                    />
+                </div>
+            </div>
 
-            <div className="max-w-7xl mx-auto">
+            <div className="relative z-10 max-w-7xl mx-auto">
                 {/* Heading Section */}
                 <div className="text-center mb-16">
                     <motion.h2
