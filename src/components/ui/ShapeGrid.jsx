@@ -199,8 +199,8 @@ const ShapeGrid = ({
         canvas.height / 2,
         Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
       );
-      gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-      gradient.addColorStop(1, '#120F17');
+      gradient.addColorStop(0, 'rgba(11,15,25,0)');
+gradient.addColorStop(1, 'rgba(11,15,25,0.25)');
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);

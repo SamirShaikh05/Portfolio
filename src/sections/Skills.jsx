@@ -1,134 +1,335 @@
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ShapeGrid from "../components/ui/ShapeGrid";
 import {
-    SiReact, SiJavascript, SiTailwindcss, SiHtml5, SiCss, SiFramer,
-    SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiGit, SiGithub,
-    SiPostman, SiVercel, SiRender, SiSocketdotio, SiCplusplus, SiJsonwebtokens
+  SiReact,
+  SiJavascript,
+  SiTailwindcss,
+  SiFramer,
+  SiHtml5,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiGit,
+  SiGithub,
+  SiLinux,
+  SiGnubash,
+  SiPostman,
+  SiVercel,
+  SiRender,
+  SiSocketdotio,
+  SiCplusplus,
+  SiJsonwebtokens,
+  SiWebrtc,
 } from "react-icons/si";
-import { FaJava, FaCode, FaServer, FaDatabase, FaTools } from "react-icons/fa";
-import ShapeGrid from '../components/ui/ShapeGrid.jsx';
+import { MdApi } from "react-icons/md";
+import { FaCss3Alt } from "react-icons/fa";
+import { FaJava } from "react-icons/fa";
 
-function Skills() {
-    const skills = [
-        {
-            title: "Frontend",
-            icon: <FaCode className="text-blue-400" />, // Changed to FaCode
-            items: [
-                { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
-                { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
-                { name: "Tailwind", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
-                { name: "HTML", icon: <SiHtml5 className="text-[#E34F26]" /> },
-                { name: "CSS", icon: <SiCss className="text-[#1572B6]" /> },
-                { name: "Framer Motion", icon: <SiFramer className="text-[#0055FF]" /> },
-            ],
-        },
-        {
-            title: "Backend",
-            icon: <FaServer className="text-blue-400" />, // Changed to FaServer
-            items: [
-                { name: "Node.js", icon: <SiNodedotjs className="text-[#339933]" /> },
-                { name: "Express", icon: <SiExpress className="text-white" /> },
-                { name: "WebSockets", icon: <SiSocketdotio className="text-white" /> },
-                { name: "JWT", icon: <SiJsonwebtokens className="text-[#FB015B]" /> },
-            ],
-        },
-        {
-            title: "Databases",
-            icon: <FaDatabase className="text-blue-400" />, // Changed to FaDatabase
-            items: [
-                { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
-                { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
-            ],
-        },
-        {
-            title: "Tools & Core",
-            icon: <FaTools className="text-blue-400" />, // Changed to FaTools
-            items: [
-                { name: "Git", icon: <SiGit className="text-[#F05032]" /> },
-                { name: "GitHub", icon: <SiGithub className="text-white" /> },
-                { name: "Postman", icon: <SiPostman className="text-[#FF6C37]" /> },
-                { name: "Vercel", icon: <SiVercel className="text-white" /> },
-                { name: "C++", icon: <SiCplusplus className="text-[#00599C]" /> },
-                { name: "Java", icon: <FaJava className="text-[#007396]" /> },
-            ],
-        },
-    ];
+// 1. Skill Data with React Icons
+const SKILL_DATA = {
+  frontend: {
+    title: "Frontend",
+    description: "Crafting responsive and interactive user experiences with a focus on accessibility and performance.",
+    rows: [
+      [{ name: "React", icon: <SiReact className="text-cyan-400" /> }, { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> }],
+      [{ name: "Tailwind CSS", icon: <SiTailwindcss className="text-sky-400" /> }, { name: "Framer Motion", icon: <SiFramer className="text-pink-400" /> }],
+      [{ name: "HTML", icon: <SiHtml5 className="text-orange-500" /> }, { name: "CSS", icon: <FaCss3Alt className="text-blue-500 text-xl" /> }]
+    ]
+  },
+  backend: {
+    title: "Backend",
+    description: "Building scalable backend systems with authentication, APIs, and real-time communication.",
+    rows: [
+      [
+        { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
+        { name: "Express.js", icon: <SiExpress className="text-gray-300" /> }
+      ],
+      [
+        { name: "REST APIs", icon: <MdApi className="text-purple-400" /> },
+        { name: "JWT", icon: <SiJsonwebtokens className="text-pink-500" /> }
+      ],
+      [
+        { name: "Socket.IO", icon: <SiSocketdotio className="text-gray-100" /> },
+        { name: "WebSockets", icon: <SiWebrtc className="text-sky-400" /> }
+      ]
+    ]
+  },
+  databases: {
+    title: "Databases",
+    description: "Designing efficient data models and managing application persistence for modern web applications.",
+    rows: [
+      [{ name: "MongoDB", icon: <SiMongodb className="text-green-600" /> }, { name: "SQL", icon: <SiPostgresql className="text-blue-600" /> }]
+    ]
+  },
+  toolsCore: {
+    title: "Tools & Core",
+    description: "Leveraging development workflows and strong problem-solving foundations to build reliable software.",
+    rows: [
+      [
+        { name: "Git", icon: <SiGit className="text-red-500" /> },
+        { name: "GitHub", icon: <SiGithub className="text-gray-100" /> }
+      ],
+      [
+        { name: "Linux", icon: <SiLinux className="text-amber-500" /> },
+        { name: "Bash", icon: <SiGnubash className="text-gray-200" /> }
+      ],
+      [
+        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
+        { name: "Vercel", icon: <SiVercel className="text-gray-100" /> }
+      ],
+      [
+        { name: "Render", icon: <SiRender className="text-indigo-500" /> },
+        { name: "Java", icon: <FaJava className="text-orange-600" /> }
+      ],
+      [
+        { name: "C++", icon: <SiCplusplus className="text-blue-500" /> }
+      ]
+    ]
+  }
+};
 
-    return (
-        <section id="skills" className="relative min-h-screen py-20 px-6 -scroll-mt-17 overflow-hidden">
-            {/* Background Glow (Matches your hero section style) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-blue-600/10 blur-[120px] rounded-full -z-30" />
-            <div className="absolute inset-0 z-1 pointer-events-none">
-                <div className="h-full w-full">
-                    <ShapeGrid
-                        speed={0.25}
-                        squareSize={42}
-                        direction="diagonal"
-                        borderColor="#1E293B"
-                        hoverFillColor="#1E293B"
-                        shape="square"
-                        hoverTrailAmount={0}
-                    />
-                </div>
-            </div>
+const DETAIL_CONTENT = {
+  "React": {
+    usedIn: ["ThundrAI", "Portfolio", "GolfImpact"],
+    concepts: ["Hooks", "Component Architecture", "State Management", "Responsive UI Development"]
+  },
+  "Node.js": {
+    usedIn: ["ThundrAI", "Full Stack To-Do", "DeluluDraw"],
+    concepts: ["REST APIs", "Middleware", "Authentication", "Real-time Services"]
+  },
+  "MongoDB": {
+    usedIn: ["ThundrAI", "GolfImpact", "Full Stack To-Do"],
+    concepts: ["Schema Design", "CRUD Operations", "Data Modeling", "Aggregation Basics"]
+  },
+  "Git": {
+    usedIn: ["All Projects"],
+    concepts: ["Version Control", "Branching", "Collaboration", "Deployment Workflows"]
+  }
+};
 
-            <div className="relative z-10 max-w-7xl mx-auto">
-                {/* Heading Section */}
-                <div className="text-center mb-16">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl font-semibold text-gray-100 mb-3"
-                    >
-                        Technical Skills
-                    </motion.h2>
-                    <p className="text-gray-400 text-base max-w-2xl mx-auto mb-4">
-                        Focused on building scalable full-stack applications, I work across the stack, from responsive frontend interfaces to efficient backend architectures and real-time systems.
-                    </p>
-                    <div className="w-24 h-0.5 bg-linear-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
-                </div>
+const getDetailData = (name) => {
+  if (DETAIL_CONTENT[name]) return DETAIL_CONTENT[name];
+  const fallbacks = {
+    "JavaScript": { usedIn: ["All Projects"], concepts: ["ES6+", "Asynchronous Programming", "DOM Manipulation"] },
+    "Tailwind CSS": { usedIn: ["ThundrAI", "GolfImpact"], concepts: ["Utility-First CSS", "Responsive Design", "Custom Configurations"] },
+    "Framer Motion": { usedIn: ["Portfolio", "Projects Grid"], concepts: ["Orchestration", "AnimatePresence", "Layout Animations"] },
+    "Express.js": { usedIn: ["ThundrAI", "Full Stack To-Do"], concepts: ["Routing", "RESTful Architecture", "Error Handling Middleware"] },
+    "JWT": { usedIn: ["Full Stack To-Do", "ThundrAI"], concepts: ["Stateless Authentication", "Token Sign/Verify", "Secure Cookies"] },
+    "SQL": { usedIn: ["Academic Labs"], concepts: ["Relational Mapping", "Normalization", "Query Optimization"] },
+    "C++": { usedIn: ["DSA Practice (350+ Solved)"], concepts: ["Data Structures", "Algorithms", "Time/Space Complexity Optimization"] },
+    "Java": { usedIn: ["Academic Frameworks"], concepts: ["OOP Principles", "Exception Handling", "Collections Framework"] },
+    "GitHub": { usedIn: ["All Codebases"], concepts: ["CI/CD Pipelines", "PR Workflows", "Issue Tracking"] },
+    "Linux": { usedIn: ["Server Environments"], concepts: ["CLI Administration", "Shell Scripting", "Process Management"] },
+  };
+  return fallbacks[name] || { usedIn: ["Portfolio Ecosystem"], concepts: ["Core Engineering", "Best Practices"] };
+};
 
-                {/* Skills Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {skills.map((group, i) => (
-                        <motion.div
-                            key={group.title}
-                            initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: i * 0.1 }}
-                            className="group relative"
-                        >
-                            <div className="absolute -inset-0.5 bg-linear-to-r from-blue-500 to-cyan-500 rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500"></div>
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.05 }
+  }
+};
 
-                            <div className="relative bg-[#0d1117]/80 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 h-full transition-all duration-300 group-hover:border-gray-700">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <span className="p-2 bg-blue-500/10 rounded-lg text-2xl">
-                                        {group.icon}
-                                    </span>
-                                    <h3 className="text-2xl font-bold text-white tracking-tight">
-                                        {group.title}
-                                    </h3>
-                                </div>
+const cardVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
 
-                                <div className="flex flex-wrap gap-3">
-                                    {group.items.map((skill, index) => (
-                                        <motion.div
-                                            key={skill.name}
-                                            whileHover={{ scale: 1.05 }}
-                                            className="flex items-center gap-2 px-4 py-2 bg-gray-900/50 border border-gray-800 rounded-xl text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-200"
-                                        >
-                                            <span className="text-lg">{skill.icon}</span>
-                                            <span className="text-sm font-medium">{skill.name}</span>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
+export default function Skills() {
+  const [hoveredTech, setHoveredTech] = useState(null);
+  const [cardMeta, setCardMeta] = useState({ top: 0, left: 0, direction: "right" });
+  const sectionRef = useRef(null);
+
+  // 2. Adaptive Tracking Logic: Tracks column placement to trigger directions smoothly
+  const handleMouseEnter = (techName, e) => {
+    if (!sectionRef.current) return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const sectionRect = sectionRef.current.getBoundingClientRect();
+    const windowWidth = window.innerWidth;
+
+    const relativeTop = rect.top - sectionRect.top;
+    const relativeLeft = rect.left - sectionRect.left;
+
+    const chipCenter = rect.left + rect.width / 2;
+    // Right column triggers rightwards card layouts, Left column triggers leftwards card layouts
+    const direction = chipCenter > windowWidth / 2 ? "right" : "left";
+
+    let leftPosition = direction === "right"
+      ? relativeLeft + rect.width + 12
+      : relativeLeft - 292;
+
+    setCardMeta({
+      top: relativeTop - 6,
+      left: leftPosition,
+      direction
+    });
+    setHoveredTech(techName);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredTech(null);
+  };
+
+  return (
+    <section ref={sectionRef} id="skills" className="relative -scroll-mt-15 px-6 py-24 z-10 w-full overflow-hidden bg-[#0B0F19]">
+
+      {/* Background Interactive Shape Canvas Layer */}
+      <div className="absolute inset-0 z-0 opacity-70 pointer-events-none">
+        <ShapeGrid
+          shape="square"
+          squareSize={45}
+          speed={0.6}
+          borderColor="#2a2a3a"
+          hoverFillColor="#3B82F6"
+          hoverTrailAmount={3}
+        />
+      </div>
+
+      <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center z-10">
+
+        {/* Main Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mb-16 text-center"
+        >
+          <h2 className="text-4xl font-semibold tracking-tight text-gray-100">
+            Skills & Expertise
+          </h2>
+          <div className="mx-auto mt-3 h-0.5 w-24 rounded-full bg-gradient-to-r from-blue-500 to-indigo-400" />
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-gray-400 sm:text-base">
+            A structured look at my technical ecosystem and engineering capabilities. Hover over a technology to see its application.
+          </p>
+        </motion.div>
+
+        {/* Categories Clean Vertical Chain Stack */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="flex flex-col gap-12 w-full max-w-2xl"
+        >
+          {Object.entries(SKILL_DATA).map(([key, category]) => (
+            <motion.div
+              key={key}
+              variants={cardVariants}
+              className="flex flex-col gap-4 w-full"
+            >
+              {/* Headings Structure Rendered Completely Safe Outside Boxes */}
+              <div className="flex flex-col px-1">
+                <h3 className="text-lg font-medium text-gray-200 mb-1 tracking-wide">
+                  {category.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
+                  {category.description}
+                </p>
+              </div>
+
+              {/* Technologies High-Fidelity Glassmorphic Surface Container */}
+              <div className="rounded-2xl border border-gray-800/40 bg-gray-950/20 p-5 backdrop-blur-md shadow-2xl shadow-black/40 flex flex-col gap-2.5 w-full">
+                {category.rows.map((row, rowIndex) => (
+                  <div key={rowIndex} className="grid grid-cols-2 gap-2.5">
+                    {row.map((chip) => (
+                      <div
+                        key={chip.name}
+                        onMouseEnter={(e) => handleMouseEnter(chip.name, e)}
+                        onMouseLeave={handleMouseLeave}
+                        className="relative flex items-center justify-center gap-2.5 rounded-xl border border-gray-800/60 bg-gray-900/10 px-4 py-3 text-xs text-gray-300 font-medium tracking-wide transition-all duration-300 cursor-crosshair select-none hover:-translate-y-0.5 hover:border-blue-500/30 hover:bg-blue-500/5 hover:text-blue-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.06)]"
+                      >
+                        {/* Dynamic React Icon Render Space */}
+                        {chip.icon ? (
+                          <span className="text-lg transition-colors duration-200 flex-shrink-0">{chip.icon}</span>
+                        ) : (
+                          <div className="w-4 h-4 rounded-md bg-gray-800/40 animate-pulse shrink-0" />
+                        )}
+
+                        <span className="truncate">{chip.name}</span>
+                      </div>
                     ))}
-                </div>
-            </div>
-        </section>
-    );
+                    {row.length === 1 && <div className="hidden grid-cols-1"></div>}
+                  </div>
+                ))}
+              </div>
+
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Pop-out Overlay Tooltips */}
+      <AnimatePresence>
+        {hoveredTech && (
+          <DetailCard
+            techName={hoveredTech}
+            meta={cardMeta}
+          />
+        )}
+      </AnimatePresence>
+    </section>
+  );
 }
 
-export default Skills;
+function DetailCard({ techName, meta }) {
+  const data = getDetailData(techName);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96, x: meta.direction === "right" ? -5 : 5 }}
+      animate={{ opacity: 1, scale: 1, x: 0 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.16, ease: "easeOut" }}
+      style={{
+        position: "absolute",
+        top: meta.top,
+        left: meta.left,
+      }}
+      className="z-50 w-[280px] pointer-events-none rounded-xl border border-gray-800/80 bg-gray-950/95 p-4.5 shadow-2xl shadow-black/90 backdrop-blur-md"
+    >
+      <h4 className="text-sm font-semibold text-gray-100 border-b border-gray-900 pb-2 mb-3 flex items-center gap-2">
+        <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+        {techName}
+      </h4>
+
+      <div className="mb-3">
+        <span className="text-[10px] font-bold tracking-wider uppercase text-gray-500 block mb-1">
+          Used In
+        </span>
+        <ul className="space-y-1">
+          {data.usedIn.map((project, idx) => (
+            <li key={idx} className="text-xs text-gray-300 flex items-center gap-1.5">
+              <span className="text-blue-500/70 select-none">•</span> {project}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <span className="text-[10px] font-bold tracking-wider uppercase text-gray-500 block mb-1">
+          Concepts
+        </span>
+        <div className="flex flex-wrap gap-1">
+          {data.concepts.map((concept, idx) => (
+            <span
+              key={idx}
+              className="inline-block bg-gray-900 text-gray-400 text-[10px] px-2 py-0.5 rounded-md border border-gray-800/60"
+            >
+              {concept}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
