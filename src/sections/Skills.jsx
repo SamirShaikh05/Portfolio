@@ -246,7 +246,7 @@ export default function Skills() {
                         key={chip.name}
                         onMouseEnter={(e) => handleMouseEnter(chip.name, e)}
                         onMouseLeave={handleMouseLeave}
-                        className="relative flex items-center justify-center gap-2.5 rounded-xl border border-gray-800/60 bg-gray-900/10 px-4 py-3 text-xs text-gray-300 font-medium tracking-wide transition-all duration-300 cursor-crosshair select-none hover:-translate-y-0.5 hover:border-blue-500/30 hover:bg-blue-500/5 hover:text-blue-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.06)]"
+                        className="relative flex items-center justify-center gap-2.5 rounded-xl border border-gray-800/60 bg-gray-900/10 px-4 py-3 text-xs text-gray-300 font-medium tracking-wide transition-all duration-300 select-none hover:-translate-y-0.5 hover:border-blue-500/30 hover:bg-blue-500/5 hover:text-blue-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.06)]"
                       >
                         {/* Dynamic React Icon Render Space */}
                         {chip.icon ? (
