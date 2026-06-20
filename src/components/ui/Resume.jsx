@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const RESUME_URL =
     "https://drive.google.com/file/d/1qWVbXJI5vL3YGOQ9mMkAEtd3SYr1S-Ys/view?usp=sharing";
 
@@ -33,17 +35,46 @@ function ResumeIcon() {
 }
 
 function Resume() {
+    const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+    useEffect(() => {
+        const footer = document.querySelector("footer");
+
+        if (!footer) return undefined;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsFooterVisible(entry.isIntersecting);
+            },
+            {
+                root: null,
+                threshold: 0,
+                rootMargin: "0px 0px -10% 0px",
+            }
+        );
+
+        observer.observe(footer);
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <a
             href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Open resume"
-            className="group fixed bottom-5 right-4 z-9999 inline-flex
+            aria-hidden={isFooterVisible}
+            tabIndex={isFooterVisible ? -1 : 0}
+            className={`group fixed bottom-5 right-4 z-9999 inline-flex
             items-center gap-2.5 text-sm font-semibold uppercase leading-none
-            tracking-[0.44em] opacity-85 transition-opacity duration-300 
-            ease-out hover:opacity-100 focus:outline-none sm:bottom-16 sm:right-20
-            sm:text-base lg:bottom-10 lg:right-15"
+            tracking-[0.44em] transition-all duration-300 
+            ease-out focus:outline-none sm:bottom-16 sm:right-20
+            sm:text-base lg:bottom-10 lg:right-15 ${
+                isFooterVisible
+                    ? "pointer-events-none translate-y-3 opacity-0"
+                    : "translate-y-0 opacity-85 hover:opacity-100"
+            }`}
         >
             <SlideRevealText text="RESUME" />
             <ResumeIcon />

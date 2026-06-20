@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import ShineBorder from "./ShineBorder";
 
 function ContactCard({ children }) {
   return (
-    <motion.div
+    <Motion.div
       initial={{
         opacity: 0,
         x: 60,
@@ -34,7 +34,7 @@ function ContactCard({ children }) {
         shineColor={["#3B82F6", "#06B6D4", "#8B5CF6"]}
       />
       {children}
-    </motion.div>
+    </Motion.div>
   );
 }
 
