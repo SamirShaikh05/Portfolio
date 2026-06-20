@@ -7,51 +7,50 @@ function Footer() {
     };
 
     return (
-        <footer className="bg-[#05080d] border-t border-gray-800 pt-16 pb-8 px-6">
-            <div className="max-w-7xl mx-auto flex flex-col items-center">
-
-                {/* Top Section: Branding & Links */}
-                <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-                    <div className="text-center md:text-left">
-                        <h2 className="text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        <footer className="bg-[#05080d] border-t border-gray-900/60 pt-12 pb-8 px-6 text-gray-400">
+            <div className="max-w-7xl mx-auto flex flex-col gap-10">
+                
+                {/* Top Row: Info & Navigation */}
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    <div>
+                        <h2 className="text-lg font-semibold text-gray-200 tracking-tight">
                             Samir Jamil Shaikh
                         </h2>
-                        <p className="text-gray-500 mt-2 text-sm max-w-xs">
+                        <p className="text-gray-500 mt-1 text-xs max-w-sm leading-relaxed">
                             Building scalable web applications and solving complex problems with the MERN stack.
                         </p>
                     </div>
 
-                    <nav className="flex gap-6 text-gray-400 text-sm font-medium">
-                        <a href="#about" className="hover:text-blue-400 transition-colors">About</a>
-                        <a href="#projects" className="hover:text-blue-400 transition-colors">Projects</a>
-                        <a href="#skills" className="hover:text-blue-400 transition-colors">Skills</a>
-                        <a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a>
-                    </nav>
-
-                    <Profiles className="text-xl" iconClassName="text-xl" linkClassName="p-2" />
-                </div>
-
-                {/* Middle Section: Back to Top */}
-                <button
-                    onClick={scrollToTop}
-                    className="group flex flex-col items-center gap-2 mb-8 text-gray-500 hover:text-blue-400 transition-all"
-                >
-                    <div className="p-3 border border-gray-800 rounded-full group-hover:border-blue-500/50 group-hover:bg-blue-500/5 transition-all">
-                        <FaArrowUp className="group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                    <span className="text-[10px] uppercase tracking-[0.2em]">Back to top</span>
-                </button>
-
-                {/* Bottom Section: Copyright */}
-                <div className="w-full pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 text-xs">
-                    <p>© {new Date().getFullYear()} Samir Jamil Shaikh. All rights reserved.</p>
-                    <div className="flex items-center gap-2">
-                        <span>Built with</span>
-                        <span className="text-blue-500">React</span>
-                        <span>&</span>
-                        <span className="text-cyan-500">Tailwind CSS</span>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-8 text-xs font-medium tracking-wide">
+                        <nav className="flex gap-5 text-gray-400">
+                            <a href="#about" className="hover:text-gray-200 transition-colors">About</a>
+                            <a href="#projects" className="hover:text-gray-200 transition-colors">Projects</a>
+                            <a href="#skills" className="hover:text-gray-200 transition-colors">Skills</a>
+                            <a href="#contact" className="hover:text-gray-200 transition-colors">Contact</a>
+                        </nav>
+                        <div className="hidden sm:block h-4 w-[1px] bg-gray-800" />
+                        <Profiles iconClassName="text-lg" />
                     </div>
                 </div>
+
+                {/* Bottom Row: Scope & System Metrics */}
+                <div className="pt-6 border-t border-gray-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-gray-500 tracking-wide">
+                    <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-4 text-center sm:text-left">
+                        <p>© {new Date().getFullYear()} All rights reserved.</p>
+                        <span className="hidden sm:inline text-gray-700">|</span>
+                        <p className="text-gray-600">Built with React & Tailwind CSS</p>
+                    </div>
+
+                    <button
+                        onClick={scrollToTop}
+                        className="flex items-center gap-1.5 hover:text-gray-200 transition-colors group text-gray-500"
+                        aria-label="Back to top"
+                    >
+                        <span>Back to top</span>
+                        <FaArrowUp className="text-[10px] group-hover:-translate-y-0.5 transition-transform" />
+                    </button>
+                </div>
+
             </div>
         </footer>
     );

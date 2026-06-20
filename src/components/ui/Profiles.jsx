@@ -26,7 +26,9 @@ const profiles = [
 function Profiles({ className = "", iconClassName = "text-2xl", linkClassName = "" }) {
     return (
         <div className={`flex shrink-0 items-center gap-2 text-slate-400 sm:gap-3 ${className}`}>
-            {profiles.map(({ label, href, icon: Icon, hoverClass }) => (
+            {profiles.map((profile) => {
+                const { label, href, icon: ProfileIcon, hoverClass } = profile;
+                return (
                 <a
                     key={label}
                     href={href}
@@ -35,9 +37,10 @@ function Profiles({ className = "", iconClassName = "text-2xl", linkClassName = 
                     aria-label={label}
                     className={`rounded-full p-1.5 transition duration-200 hover:scale-[1.12] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400 ${hoverClass} ${linkClassName}`}
                 >
-                    <Icon className={iconClassName} />
+                    <ProfileIcon className={iconClassName} />
                 </a>
-            ))}
+                );
+            })}
         </div>
     );
 }

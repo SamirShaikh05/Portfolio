@@ -5,8 +5,11 @@ import {
     SiVercel
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
+import SectionFlow from "../components/layout/SectionFlow";
+import SectionHeading from "../components/layout/SectionHeading";
 import Orb from '../components/ui/Orb'
 import MagicRings from "../components/ui/MagicRings";
+import { fadeUp, slideFromLeft, slideFromRight, VIEWPORT } from "../motion";
 
 function TechRail({ tech, direction = "left", duration = 35 }) {
     const railGroup = [...tech, ...tech];
@@ -76,63 +79,59 @@ function About() {
     ];
 
     return (
-        <section id="about" className="relative -scroll-mt-4 min-h-[85vh] py-20 px-6">
-            {/* Magic Rings */}
-            <div className="absolute inset-0 opacity-50 pointer-events-none">
-                <MagicRings
-                    color="#3B82F6"
-                    colorTwo="#06B6D4"
-                    ringCount={5}
-                    speed={0.5}
-                    attenuation={12}
-                    lineThickness={1}
-                    baseRadius={0.45}
-                    radiusStep={0.12}
-                    scaleRate={0.05}
-                    opacity={0.4}
-                    blur={2}
-                    noiseAmount={0}
-                    rotation={0}
-                    ringGap={1.8}
-                    fadeIn={0.8}
-                    fadeOut={0.8}
-                    followMouse={false}
-                    hoverScale={1}
-                    parallax={0}
-                    clickBurst={false}
-                />
-            </div>
+        <SectionFlow
+            id="about"
+            className="-scroll-mt-4 min-h-[85vh] py-20 px-6"
+            background={
+                <>
+                    <div className="absolute inset-0 opacity-50 pointer-events-none">
+                        <MagicRings
+                            color="#3B82F6"
+                            colorTwo="#06B6D4"
+                            ringCount={5}
+                            speed={0.5}
+                            attenuation={12}
+                            lineThickness={1}
+                            baseRadius={0.45}
+                            radiusStep={0.12}
+                            scaleRate={0.05}
+                            opacity={0.4}
+                            blur={2}
+                            noiseAmount={0}
+                            rotation={0}
+                            ringGap={1.8}
+                            fadeIn={0.8}
+                            fadeOut={0.8}
+                            followMouse={false}
+                            hoverScale={1}
+                            parallax={0}
+                            clickBurst={false}
+                        />
+                    </div>
 
-            {/* Orb */}
-            <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
-                <Orb
-                    hoverIntensity={0.4}
-                    rotateOnHover
-                    hue={0}
-                    forceHoverState={false}
-                    backgroundColor="#000000"
-                />
-            </div>
-            
+                    <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+                        <Orb
+                            hoverIntensity={0.4}
+                            rotateOnHover
+                            hue={0}
+                            forceHoverState={false}
+                            backgroundColor="#000000"
+                        />
+                    </div>
+                </>
+            }
+        >
             <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-8">
-                {/* Heading */}
-                <Motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.55, ease: "easeOut" }}
-                    className="text-center"
-                >
-                    <h2 className="text-4xl font-semibold text-gray-100 mb-4">About Me</h2>
-                    <div className="mx-auto h-0.5 w-24 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full"></div>
-                </Motion.div>
+                <SectionHeading title="About Me" />
 
                 {/* Main content */}
                 <div className="grid md:grid-cols-2 gap-8">
                     {/* Who I Am */}
                     <Motion.div
-                        initial={{ opacity: 0, x: -60 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+                        variants={slideFromLeft}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={VIEWPORT}
                         className="rounded-3xl border border-blue-500/15 bg-linear-to-b from-slate-900/60 to-slate-950/40 backdrop-blur-xl
                         p-6 shadow-[0_0_40px_rgba(37,99,235,0.08)] hover:border-blue-500/30 hover:shadow-[0_0_50px_rgba(37,99,235,0.15)] hover:-translate-y-1
                         transition-all duration-300">
@@ -163,9 +162,10 @@ function About() {
 
                     {/* What I Do */}
                     <Motion.div
-                        initial={{ opacity: 0, x: 60 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+                        variants={slideFromRight}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={VIEWPORT}
                         className="rounded-3xl border border-blue-500/15 bg-linear-to-b from-slate-900/60 to-slate-950/40 backdrop-blur-xl
                         p-6 shadow-[0_0_40px_rgba(37,99,235,0.08)] hover:border-blue-500/30 hover:shadow-[0_0_50px_rgba(37,99,235,0.15)] hover:-translate-y-1
                         transition-all duration-300">
@@ -200,11 +200,11 @@ function About() {
                 {/* Tech Stack Section */}
                 <div className="flex flex-col items-center gap-4 cursor-default select-none">
 
-                    {/* Header */}
                     <Motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={VIEWPORT}
                         className="text-center"
                     >
                         <h3 className="text-2xl font-semibold text-gray-100 mb-3">
@@ -220,20 +220,20 @@ function About() {
                     <div className="relative w-full overflow-hidden">
                         <TechRail tech={tech1} duration={38} />
 
-                        <div className="absolute left-0 top-0 h-full w-24 bg-linear-to-r from-[#020817] to-transparent pointer-events-none" />
+                        <div className="absolute left-0 top-0 h-full w-24 bg-linear-to-r from-[#0B0F19] to-transparent pointer-events-none" />
 
-                        <div className="absolute right-0 top-0 h-full w-24 bg-linear-to-l from-[#020817] to-transparent pointer-events-none" />
+                        <div className="absolute right-0 top-0 h-full w-24 bg-linear-to-l from-[#0B0F19] to-transparent pointer-events-none" />
                     </div>
                     <div className="relative w-full overflow-hidden">
                         <TechRail tech={tech2} direction="right" duration={42} />
 
-                        <div className="absolute left-0 top-0 h-full w-24 bg-linear-to-r from-[#020817] to-transparent pointer-events-none" />
+                        <div className="absolute left-0 top-0 h-full w-24 bg-linear-to-r from-[#0B0F19] to-transparent pointer-events-none" />
 
-                        <div className="absolute right-0 top-0 h-full w-24 bg-linear-to-l from-[#020817] to-transparent pointer-events-none" />
+                        <div className="absolute right-0 top-0 h-full w-24 bg-linear-to-l from-[#0B0F19] to-transparent pointer-events-none" />
                     </div>
                 </div>
             </div>
-        </section>
+        </SectionFlow>
     );
 }
 

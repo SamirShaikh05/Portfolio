@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
+import SectionFlow from "../components/layout/SectionFlow";
+import SectionHeading from "../components/layout/SectionHeading";
 import ProjectCard from "../components/ui/ProjectCard.jsx";
+import { fadeUp, staggerContainer, VIEWPORT } from "../motion";
 
 const projects = [
     {
@@ -62,13 +65,6 @@ const FILTERS = [
     { label: "Backend (1)", value: "backend" },
 ];
 
-const containerVariants = {
-    hidden: {},
-    visible: {
-        transition: { staggerChildren: 0.08 },
-    },
-};
-
 function Projects() {
     const [activeFilter, setActiveFilter] = useState("all");
 
@@ -78,34 +74,31 @@ function Projects() {
             : projects.filter((p) => p.category === activeFilter);
 
     return (
-        <section id="projects" className="-scroll-mt-15 px-6 py-24">
-            <div className="mx-auto flex w-full max-w-7xl flex-col items-center">
-
-                {/* Heading */}
-                <Motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="mb-3 text-center"
+        <SectionFlow
+            id="projects"
+            className="-scroll-mt-15 px-6 py-30"
+            background={
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 opacity-40"
                 >
-                    <h2 className="text-4xl font-semibold tracking-tight text-gray-100">
-                        Projects
-                    </h2>
-                    <div className="mx-auto mt-3 h-0.5 w-24 rounded-full bg-linear-to-r from-blue-500 to-cyan-400" />
-                    <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-400 sm:text-base">
-                        Projects that showcase my experience building modern web
-                        applications, backend systems, AI integrations, and
-                        production-ready user experiences.
-                    </p>
-                </Motion.div>
+                    <div className="absolute left-1/2 top-1/3 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-blue-600/[0.04] blur-[100px]" />
+                </div>
+            }
+        >
+            <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center">
+                <SectionHeading
+                    title="Projects"
+                    subtitle="Projects that showcase my experience building modern web applications, backend systems, AI integrations, and production-ready user experiences."
+                    className="mb-3"
+                />
 
                 {/* Filter Tabs */}
                 <Motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 }}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={VIEWPORT}
                     className="mb-10 mt-8 flex flex-wrap justify-center gap-2"
                 >
                     {FILTERS.map((f) => (
@@ -126,9 +119,10 @@ function Projects() {
                 {/* Cards Grid */}
                 <Motion.div
                     key={activeFilter}
-                    variants={containerVariants}
+                    variants={staggerContainer()}
                     initial="hidden"
-                    animate="visible"
+                    whileInView="visible"
+                    viewport={VIEWPORT}
                     className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
                 >
                     <AnimatePresence mode="popLayout">
@@ -138,7 +132,7 @@ function Projects() {
                     </AnimatePresence>
                 </Motion.div>
             </div>
-        </section>
+        </SectionFlow>
     );
 }
 

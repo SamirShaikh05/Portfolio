@@ -1,4 +1,5 @@
 import { motion as Motion } from "framer-motion";
+import { cardReveal } from "../../motion";
 
 const TAG_STYLES = {
     fullstack: "bg-blue-500/10 text-blue-400",
@@ -34,15 +35,7 @@ function ProjectCard({ project }) {
 
     return (
         <Motion.article
-            variants={{
-                hidden: { opacity: 0, y: 16, scale: 0.97 },
-                visible: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: { duration: 0.4, ease: "easeOut" },
-                },
-            }}
+            variants={cardReveal}
             layout
             onClick={openProject}
             onKeyDown={handleKeyDown}

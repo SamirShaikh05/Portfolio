@@ -1,4 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+function createMeteorStyles(number, minDelay, maxDelay, minDuration, maxDuration, angle) {
+    return [...Array(number)].map(() => ({
+        "--angle": `${-angle}deg`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * (maxDelay - minDelay) + minDelay}s`,
+        animationDuration: `${Math.random() * (maxDuration - minDuration) + minDuration}s`,
+    }));
+}
 
 export default function Meteors({
     number = 20,
@@ -9,20 +19,9 @@ export default function Meteors({
     angle = 215,
     className = "",
 }) {
-    const [meteorStyles, setMeteorStyles] = useState([]);
-
-    useEffect(() => {
-        const styles = [...Array(number)].map(() => ({
-            "--angle": `${-angle}deg`,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * (maxDelay - minDelay) + minDelay}s`,
-            animationDuration: `${Math.random() * (maxDuration - minDuration) + minDuration
-                }s`,
-        }));
-
-        setMeteorStyles(styles);
-    }, [number, minDelay, maxDelay, minDuration, maxDuration, angle]);
+    const [meteorStyles] = useState(() =>
+        createMeteorStyles(number, minDelay, maxDelay, minDuration, maxDuration, angle)
+    );
 
     return (
         <>

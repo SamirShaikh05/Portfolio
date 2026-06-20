@@ -1,9 +1,12 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import SectionFlow from "../components/layout/SectionFlow";
+import SectionHeading from "../components/layout/SectionHeading";
 import Profiles from "../components/ui/Profiles.jsx";
 import ContactCard from "../components/ui/ContactCard.jsx";
-import Strands from "../components/ui/Strands.jsx"; 
+import Strands from "../components/ui/Strands.jsx";
+import { slideFromLeft, slideFromRight, TRANSITION, VIEWPORT } from "../motion";
 
 function Contact() {
   const [status, setStatus] = useState("");
@@ -29,80 +32,66 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 px-6 -scroll-mt-17 relative overflow-hidden">
-      
-      {/* GLOWING STRANDS BACKGROUND */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-70">
-        <Strands
-          colors={["#3B82F6", "#06B6D4", "#7C3AED"]} 
-          count={8}             // Balanced strand count
-          speed={0.2}           
-          amplitude={1.1}       
-          waviness={0.5}        
-          thickness={0.7}       
-          glow={1.8}            
-          taper={2.5}           
-          spread={1.2}          
-          intensity={0.5}
-          saturation={2}
-          opacity={0.4}
-          scale={1.6}
-          glass={false}
-        />
-      </div>
-
-      {/* FOREGROUND CONTENT CONTAINER */}
-      <div className="max-w-7xl mx-auto relative z-10">
-        
-        {/* HEADER */}
-        <div className="text-center mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl font-semibold text-gray-100"
-          >
-            Contact
-          </motion.h2>
-          <div className="mx-auto mt-3 h-0.5 w-24 rounded-full bg-gradient-to-r from-blue-500 to-indigo-400" />
-
-          <p className="text-gray-400 text-base max-w-xl mx-auto mt-4">
-            Let’s connect and discuss opportunities, ideas, or collaborations.
-          </p>
+    <SectionFlow
+      id="contact"
+      className="-scroll-mt-16 px-6 py-24 sm:py-28"
+      background={
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-70">
+          <Strands
+            colors={["#3B82F6", "#06B6D4", "#7C3AED"]}
+            count={8}
+            speed={0.2}
+            amplitude={1.1}
+            waviness={0.5}
+            thickness={0.7}
+            glow={1.8}
+            taper={2.5}
+            spread={1.2}
+            intensity={0.5}
+            saturation={2}
+            opacity={0.4}
+            scale={1.6}
+            glass={false}
+          />
         </div>
+      }
+    >
+      <div className="max-w-7xl mx-auto relative z-10">
+        <SectionHeading
+          title="Contact"
+          subtitle="Let's connect and discuss opportunities, ideas, or collaborations."
+          className="mb-14 sm:mb-16"
+        />
 
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid items-center gap-12 md:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           {/* LEFT SIDE */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -60,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.7,
-              ease: "easeOut",
-            }}
+          <Motion.div
+            variants={slideFromLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
           >
-            <h2 className="text-5xl font-semibold text-white leading-tight">
-              Let’s build something
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> great together.</span>
+            <h2 className="max-w-xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
+              Let's build something
+              <span className="bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> great together.</span>
             </h2>
 
             <p className="text-gray-400 max-w-md mt-4">
-              I’m currently open to internships, freelance work, or collaborations.
+              I'm currently open to internships, freelance work, or collaborations.
             </p>
 
-            {/* Socials */}
             <Profiles className="mt-6 text-2xl" iconClassName="text-2xl" linkClassName="p-2" />
-          </motion.div>
+          </Motion.div>
 
           {/* RIGHT SIDE FORM */}
-          <ContactCard>
-            <form onSubmit={sendEmail} className="flex flex-col gap-5">
+          <Motion.div
+            variants={slideFromRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+          >
+            <ContactCard>
+                          <form onSubmit={sendEmail} className="flex flex-col gap-5">
               <input
                 type="text"
                 name="name"
@@ -160,7 +149,7 @@ focus:border-blue-500
 "
               ></textarea>
 
-              <motion.button
+              <Motion.button
                 whileHover={{
                   scale: 1.02,
                 }}
@@ -172,19 +161,20 @@ focus:border-blue-500
                 shadow-[0_0_30px_rgba(59,130,246,0.25)]"
               >
                 Send Message →
-              </motion.button>
+              </Motion.button>
 
               {/* STATUS MESSAGE */}
               {status && (
                 <p className="text-sm text-gray-400 mt-2">{status}</p>
               )}
             </form>
-          </ContactCard>
+            </ContactCard>
+          </Motion.div>
         </div>
-
       </div>
-    </section>
+    </SectionFlow>
   );
 }
 
 export default Contact;
+

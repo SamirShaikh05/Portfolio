@@ -1,6 +1,9 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion as Motion, AnimatePresence } from "framer-motion";
+import SectionFlow from "../components/layout/SectionFlow";
+import SectionHeading from "../components/layout/SectionHeading";
 import ShapeGrid from "../components/ui/ShapeGrid";
+import { cardReveal, staggerContainer, TRANSITION, VIEWPORT } from "../motion";
 import {
   SiReact,
   SiJavascript,
@@ -126,50 +129,39 @@ const getDetailData = (name) => {
   return fallbacks[name] || { usedIn: ["Portfolio Ecosystem"], concepts: ["Core Engineering", "Best Practices"] };
 };
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 }
-  }
-};
+const containerVariants = staggerContainer(0.1, 0.05);
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
-  }
-};
+const cardVariants = cardReveal;
 
 export default function Skills() {
   const [hoveredTech, setHoveredTech] = useState(null);
   const [cardMeta, setCardMeta] = useState({ top: 0, left: 0, direction: "right" });
-  const sectionRef = useRef(null);
 
-  // 2. Adaptive Tracking Logic: Tracks column placement to trigger directions smoothly
   const handleMouseEnter = (techName, e) => {
-    if (!sectionRef.current) return;
-
     const rect = e.currentTarget.getBoundingClientRect();
-    const sectionRect = sectionRef.current.getBoundingClientRect();
     const windowWidth = window.innerWidth;
-
-    const relativeTop = rect.top - sectionRect.top;
-    const relativeLeft = rect.left - sectionRect.left;
+    const windowHeight = window.innerHeight;
+    const cardWidth = 280;
+    const cardHeightEstimate = 220;
+    const gap = 12;
+    const margin = 16;
 
     const chipCenter = rect.left + rect.width / 2;
-    // Right column triggers rightwards card layouts, Left column triggers leftwards card layouts
     const direction = chipCenter > windowWidth / 2 ? "right" : "left";
 
-    let leftPosition = direction === "right"
-      ? relativeLeft + rect.width + 12
-      : relativeLeft - 292;
+    const preferredLeft = direction === "right"
+      ? rect.right + gap
+      : rect.left - cardWidth - gap;
 
     setCardMeta({
-      top: relativeTop - 6,
-      left: leftPosition,
+      top: Math.min(
+        Math.max(rect.top - 6, margin),
+        windowHeight - cardHeightEstimate - margin
+      ),
+      left: Math.min(
+        Math.max(preferredLeft, margin),
+        windowWidth - cardWidth - margin
+      ),
       direction
     });
     setHoveredTech(techName);
@@ -180,49 +172,39 @@ export default function Skills() {
   };
 
   return (
-    <section ref={sectionRef} id="skills" className="relative -scroll-mt-15 px-6 py-24 z-10 w-full overflow-hidden bg-[#0B0F19]">
-
-      {/* Background Interactive Shape Canvas Layer */}
-      <div className="absolute inset-0 z-0 opacity-70 pointer-events-none">
-        <ShapeGrid
-          shape="square"
-          squareSize={45}
-          speed={0.6}
-          borderColor="#2a2a3a"
-          hoverFillColor="#3B82F6"
-          hoverTrailAmount={3}
-        />
-      </div>
-
+    <SectionFlow
+      id="skills"
+      className="-scroll-mt-35 px-6 py-50 z-10 w-full"
+      background={
+        <div className="absolute inset-0 z-0 opacity-70 pointer-events-none">
+          <ShapeGrid
+            shape="square"
+            squareSize={45}
+            speed={0.6}
+            borderColor="#2a2a3a"
+            hoverFillColor="#3B82F6"
+            hoverTrailAmount={3}
+          />
+        </div>
+      }
+    >
       <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center z-10">
-
-        {/* Main Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-16 text-center"
-        >
-          <h2 className="text-4xl font-semibold tracking-tight text-gray-100">
-            Skills & Expertise
-          </h2>
-          <div className="mx-auto mt-3 h-0.5 w-24 rounded-full bg-gradient-to-r from-blue-500 to-indigo-400" />
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-gray-400 sm:text-base">
-            A structured look at my technical ecosystem and engineering capabilities. Hover over a technology to see its application.
-          </p>
-        </motion.div>
+        <SectionHeading
+          title="Skills & Expertise"
+          subtitle="A structured look at my technical ecosystem and engineering capabilities. Hover over a technology to see its application."
+          className="mb-16"
+        />
 
         {/* Categories Clean Vertical Chain Stack */}
-        <motion.div
+        <Motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={VIEWPORT}
           className="flex flex-col gap-12 w-full max-w-2xl"
         >
           {Object.entries(SKILL_DATA).map(([key, category]) => (
-            <motion.div
+            <Motion.div
               key={key}
               variants={cardVariants}
               className="flex flex-col gap-4 w-full"
@@ -263,9 +245,9 @@ export default function Skills() {
                 ))}
               </div>
 
-            </motion.div>
+            </Motion.div>
           ))}
-        </motion.div>
+        </Motion.div>
       </div>
 
       {/* Pop-out Overlay Tooltips */}
@@ -277,7 +259,7 @@ export default function Skills() {
           />
         )}
       </AnimatePresence>
-    </section>
+    </SectionFlow>
   );
 }
 
@@ -285,13 +267,13 @@ function DetailCard({ techName, meta }) {
   const data = getDetailData(techName);
 
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, scale: 0.96, x: meta.direction === "right" ? -5 : 5 }}
       animate={{ opacity: 1, scale: 1, x: 0 }}
       exit={{ opacity: 0, scale: 0.96 }}
-      transition={{ duration: 0.16, ease: "easeOut" }}
+      transition={TRANSITION.fast}
       style={{
-        position: "absolute",
+        position: "fixed",
         top: meta.top,
         left: meta.left,
       }}
@@ -330,6 +312,6 @@ function DetailCard({ techName, meta }) {
           ))}
         </div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }

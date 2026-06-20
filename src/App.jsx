@@ -1,3 +1,4 @@
+import AmbientBackground from './components/layout/AmbientBackground'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
 import Resume from './components/ui/Resume'
@@ -10,10 +11,11 @@ import Skills from './sections/Skills'
 
 function App() {
   return (
-    <div className="bg-[#0B0F19] text-white min-h-screen">
+    <div className="relative text-white min-h-screen">
+      <AmbientBackground />
       <Navbar />
 
-      <main>
+      <main className="relative z-[1]">
         <Hero />
         <About />
         <Projects />
