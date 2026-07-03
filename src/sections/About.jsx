@@ -4,12 +4,16 @@ import {
     SiMongodb, SiMongoose, SiNodedotjs, SiOpenjdk, SiPostman, SiReact, SiRedux, SiRender, SiTailwindcss,
     SiVercel
 } from "react-icons/si";
+import { MdExpandMore } from "react-icons/md";
 import { VscVscode } from "react-icons/vsc";
 import SectionFlow from "../components/layout/SectionFlow";
 import SectionHeading from "../components/layout/SectionHeading";
 import Orb from '../components/ui/Orb'
 import MagicRings from "../components/ui/MagicRings";
 import { fadeUp, slideFromLeft, slideFromRight, VIEWPORT } from "../motion";
+import { AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import TechTriangle from "../components/layout/TechTriangle.jsx";
 
 function TechRail({ tech, direction = "left", duration = 35 }) {
     const railGroup = [...tech, ...tech];
@@ -77,6 +81,9 @@ function About() {
         { name: "C++", icon: SiCplusplus, color: "text-blue-500" },
         { name: "Java", icon: SiOpenjdk, color: "text-red-400" },
     ];
+
+    const [showAll, setShowAll] = useState(false);
+    const allTech = [...tech1, ...tech2];
 
     return (
         <SectionFlow
@@ -217,20 +224,77 @@ function About() {
                     </Motion.div>
 
                     {/* Rails */}
-                    <div className="relative w-full overflow-hidden">
-                        <TechRail tech={tech1} duration={38} />
+                    <AnimatePresence mode="wait">
 
-                        <div className="absolute left-0 top-0 h-full w-24 bg-linear-to-r from-[#0B0F19] to-transparent pointer-events-none" />
+                        {!showAll ? (
 
-                        <div className="absolute right-0 top-0 h-full w-24 bg-linear-to-l from-[#0B0F19] to-transparent pointer-events-none" />
-                    </div>
-                    <div className="relative w-full overflow-hidden">
-                        <TechRail tech={tech2} direction="right" duration={42} />
+                            <Motion.div
+                                key="rail"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0, y: -30 }}
+                                transition={{ duration: 0.4 }}
+                                className="w-full flex flex-col gap-4"
+                            >
 
-                        <div className="absolute left-0 top-0 h-full w-24 bg-linear-to-r from-[#0B0F19] to-transparent pointer-events-none" />
+                                <div className="relative w-full overflow-hidden">
+                                    <TechRail tech={tech1} duration={38} />
 
-                        <div className="absolute right-0 top-0 h-full w-24 bg-linear-to-l from-[#0B0F19] to-transparent pointer-events-none" />
-                    </div>
+                                    <div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-[#0B0F19] to-transparent" />
+                                    <div className="absolute right-0 top-0 h-full w-28 bg-gradient-to-l from-[#0B0F19] to-transparent" />
+                                </div>
+
+                                <div className="relative w-full overflow-hidden">
+                                    <TechRail
+                                        tech={tech2}
+                                        direction="right"
+                                        duration={42}
+                                    />
+
+                                    <div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-[#0B0F19] to-transparent" />
+                                    <div className="absolute right-0 top-0 h-full w-28 bg-gradient-to-l from-[#0B0F19] to-transparent" />
+                                </div>
+
+                                <div className="mt-6 flex justify-center">
+
+                                    <button
+                                        onClick={() => setShowAll(true)}
+                                        className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-2 text-sm text-gray-400 transition hover:border-blue-500/30 hover:text-white"
+                                    >
+                                        Explore Full Tech Stack
+
+                                        <MdExpandMore className="transition group-hover:translate-y-1" />
+                                    </button>
+
+                                </div>
+
+                            </Motion.div>
+
+                        ) : (
+
+                            <Motion.div
+                                key="triangle"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.45 }}
+                                className="flex flex-col items-center gap-4"
+                            >
+
+                                <TechTriangle tech={allTech} />
+
+                                <button
+                                    onClick={() => setShowAll(false)}
+                                    className="text-sm text-blue-400 hover:text-cyan-300 transition"
+                                >
+                                    Collapse
+                                </button>
+
+                            </Motion.div>
+
+                        )}
+
+                    </AnimatePresence>
                 </div>
             </div>
         </SectionFlow>
