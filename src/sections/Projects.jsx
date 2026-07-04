@@ -7,12 +7,31 @@ import { fadeUp, staggerContainer, VIEWPORT } from "../motion";
 
 const projects = [
     {
+        name: "SchoolConnect",
+        des: "An end-to-end school management platform that connects parents, teachers, and administrators through real-time communication, digital fee management, attendance, homework, announcements, and secure role-based access.",
+        tech: "React, Node.js, Express, PostgreSQL, Socket.IO, JWT",
+        img: "SchoolLink.png",
+        live: null,
+        category: "fullstack",
+        featured: true,
+    },
+    {
+        name: "DeluluDraw",
+        des: "A scalable real-time multiplayer drawing platform featuring synchronized canvas rendering, room-based matchmaking, live chat, scoring, and WebSocket-powered game state management.",
+        tech: "React, Node.js, Express, Socket.IO, HTML5 Canvas",
+        img: "delulu-draw.png",
+        live: "https://delulu-draw.vercel.app/",
+        category: "fullstack",
+        featured: true,
+    },
+    {
         name: "ThundrAI",
         des: "AI-powered full-stack chat application with real-time conversations and context-aware responses using Gemini API.",
         tech: "MERN, Gemini API, Tailwind",
         img: "ThundrAI.png",
         live: "https://thundr-ai.vercel.app/",
         category: "fullstack",
+        featured: true
     },
     {
         name: "GolfImpact",
@@ -21,6 +40,7 @@ const projects = [
         img: "GolfImpact.png",
         live: "https://golf-imapct.vercel.app/",
         category: "fullstack",
+        featured: true
     },
     {
         name: "Spotify Clone",
@@ -29,6 +49,7 @@ const projects = [
         img: "Spotify-Clone.png",
         live: "https://samirshaikh05.github.io/Spotify-Clone/",
         category: "frontend",
+        featured: true
     },
     {
         name: "Full Stack To-Do",
@@ -37,42 +58,55 @@ const projects = [
         img: "To-Do.png",
         live: "https://full-stack-to-do-sigma.vercel.app/",
         category: "fullstack",
+        featured: true
     },
     {
-        name: "REST API Boilerplate",
-        des: "Production-ready Express REST API with authentication, rate limiting, and auto-generated Swagger docs.",
-        tech: "Node.js, Express, MongoDB, Swagger",
+        name: "AI Call Agent",
+        des: "A resilient backend system for AI service orchestration featuring exponential backoff, circuit breakers, graceful degradation, structured logging, and operational observability.",
+        tech: "Node.js, Google Sheets API, Telegram API, Distributed Systems",
         img: null,
-        emoji: "🔧",
         live: null,
         category: "backend",
+        featured: false,
     },
     {
-        name: "Dev Portfolio v1",
-        des: "Earlier iteration of this portfolio — static HTML/CSS with smooth CSS keyframe animations.",
-        tech: "HTML, CSS, JavaScript",
+        name: "InsightForge",
+        des: "A full-stack AI content pipeline that automates blog scraping, external research, and Gemini-powered article enhancement through a scalable REST API architecture.",
+        tech: "React, Node.js, MongoDB, Gemini API, Cheerio, SerpAPI",
         img: null,
-        emoji: "🎨",
         live: null,
-        category: "frontend",
-    },
+        category: "fullstack",
+        featured: false,
+    }
 ];
 
-const FILTERS = [
-    { label: "All (6)", value: "all" },
-    { label: "Full Stack (3)", value: "fullstack" },
-    { label: "Frontend (2)", value: "frontend" },
-    { label: "Backend (1)", value: "backend" },
-];
 
 function Projects() {
-    const [activeFilter, setActiveFilter] = useState("all");
+    const [activeFilter, setActiveFilter] = useState("featured");
 
     const filtered =
-        activeFilter === "all"
-            ? projects
+        activeFilter === "featured"
+            ? projects.filter((p) => p.featured)
             : projects.filter((p) => p.category === activeFilter);
 
+    const FILTERS = [
+        {
+            label: `Featured (${projects.filter((p) => p.featured).length})`,
+            value: "featured",
+        },
+        {
+            label: `Full Stack (${projects.filter((p) => p.category === "fullstack").length})`,
+            value: "fullstack",
+        },
+        {
+            label: `Frontend (${projects.filter((p) => p.category === "frontend").length})`,
+            value: "frontend",
+        },
+        {
+            label: `Backend (${projects.filter((p) => p.category === "backend").length})`,
+            value: "backend",
+        },
+    ];
     return (
         <SectionFlow
             id="projects"
@@ -105,7 +139,7 @@ function Projects() {
                         <button
                             key={f.value}
                             onClick={() => setActiveFilter(f.value)}
-                            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-all duration-200
+                            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-featured duration-200
                                 ${activeFilter === f.value
                                     ? "border-blue-500/40 bg-blue-500/15 text-blue-300 shadow-sm shadow-blue-900/40"
                                     : "border-gray-700 bg-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200"
