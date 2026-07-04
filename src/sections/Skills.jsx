@@ -95,21 +95,326 @@ const SKILL_DATA = {
 
 const DETAIL_CONTENT = {
   "React": {
-    usedIn: ["ThundrAI", "Portfolio", "GolfImpact"],
-    concepts: ["Hooks", "Component Architecture", "State Management", "Responsive UI Development"]
+    usedIn: [
+      "Portfolio",
+      "ThundrAI",
+      "GolfImpact",
+      "SchoolConnect",
+      "InsightForge",
+      "Full Stack To-Do",
+      "DeluluDraw",
+    ],
+    concepts: [
+      "Component Architecture",
+      "Hooks",
+      "Reusable UI",
+      "State Management",
+      "Responsive Design",
+    ],
   },
+
+  "JavaScript": {
+    usedIn: [
+      "All Web Projects",
+    ],
+    concepts: [
+      "ES6+",
+      "Async/Await",
+      "Promises",
+      "Event Loop",
+      "DOM APIs",
+    ],
+  },
+
+  "Tailwind CSS": {
+    usedIn: [
+      "Portfolio",
+      "ThundrAI",
+      "GolfImpact",
+      "DeluluDraw",
+      "SchoolConnect",
+    ],
+    concepts: [
+      "Utility-first CSS",
+      "Responsive Layouts",
+      "Dark Theme",
+      "Glassmorphism",
+    ],
+  },
+
+  "Framer Motion": {
+    usedIn: [
+      "Portfolio",
+    ],
+    concepts: [
+      "Scroll Animations",
+      "Layout Animations",
+      "AnimatePresence",
+      "Variants",
+    ],
+  },
+
+  "HTML": {
+    usedIn: [
+      "Portfolio",
+      "Spotify Clone",
+      "DeluluDraw",
+    ],
+    concepts: [
+      "Semantic HTML",
+      "Accessibility",
+      "SEO",
+    ],
+  },
+
+  "CSS": {
+    usedIn: [
+      "Portfolio",
+      "Spotify Clone",
+    ],
+    concepts: [
+      "Flexbox",
+      "Grid",
+      "Animations",
+      "Responsive Design",
+    ],
+  },
+
   "Node.js": {
-    usedIn: ["ThundrAI", "Full Stack To-Do", "DeluluDraw"],
-    concepts: ["REST APIs", "Middleware", "Authentication", "Real-time Services"]
+    usedIn: [
+      "ThundrAI",
+      "SchoolConnect",
+      "AI Call Agent",
+      "InsightForge",
+      "DeluluDraw",
+      "GolfImpact",
+      "Full Stack To-Do",
+    ],
+    concepts: [
+      "REST APIs",
+      "Middleware",
+      "Async Programming",
+      "Background Jobs",
+      "Real-time Services",
+    ],
   },
+
+  "Express.js": {
+    usedIn: [
+      "ThundrAI",
+      "SchoolConnect",
+      "InsightForge",
+      "AI Call Agent",
+      "GolfImpact",
+      "Full Stack To-Do",
+      "DeluluDraw",
+    ],
+    concepts: [
+      "REST Architecture",
+      "Routing",
+      "Middleware",
+      "Error Handling",
+    ],
+  },
+
+  "REST APIs": {
+    usedIn: [
+      "SchoolConnect",
+      "InsightForge",
+      "AI Call Agent",
+      "ThundrAI",
+      "GolfImpact",
+      "Full Stack To-Do",
+    ],
+    concepts: [
+      "CRUD",
+      "HTTP Methods",
+      "Status Codes",
+      "API Design",
+    ],
+  },
+
+  "JWT": {
+    usedIn: [
+      "SchoolConnect",
+      "Full Stack To-Do",
+      "GolfImpact",
+    ],
+    concepts: [
+      "Authentication",
+      "Authorization",
+      "Protected Routes",
+      "Token Verification",
+    ],
+  },
+
+  "Socket.IO": {
+    usedIn: [
+      "DeluluDraw",
+      "SchoolConnect",
+    ],
+    concepts: [
+      "Real-time Messaging",
+      "Room Management",
+      "Event-driven Systems",
+      "State Synchronization",
+    ],
+  },
+
+  "WebSockets": {
+    usedIn: [
+      "DeluluDraw",
+      "SchoolConnect",
+    ],
+    concepts: [
+      "Bi-directional Communication",
+      "Low Latency",
+      "Live Collaboration",
+    ],
+  },
+
   "MongoDB": {
-    usedIn: ["ThundrAI", "GolfImpact", "Full Stack To-Do"],
-    concepts: ["Schema Design", "CRUD Operations", "Data Modeling", "Aggregation Basics"]
+    usedIn: [
+      "ThundrAI",
+      "InsightForge",
+      "GolfImpact",
+      "Full Stack To-Do",
+      "SchoolConnect",
+    ],
+    concepts: [
+      "Schema Design",
+      "Aggregation",
+      "Indexes",
+      "Data Modeling",
+    ],
   },
+
+  "SQL": {
+    usedIn: [
+      "SchoolConnect",
+    ],
+    concepts: [
+      "Relational Design",
+      "Normalization",
+      "Joins",
+      "Transactions",
+    ],
+  },
+
   "Git": {
-    usedIn: ["All Projects"],
-    concepts: ["Version Control", "Branching", "Collaboration", "Deployment Workflows"]
-  }
+    usedIn: [
+      "All Projects",
+    ],
+    concepts: [
+      "Branching",
+      "Version Control",
+      "Merge Conflict Resolution",
+      "Git Flow",
+    ],
+  },
+
+  "GitHub": {
+    usedIn: [
+      "All Projects",
+    ],
+    concepts: [
+      "Pull Requests",
+      "Issue Tracking",
+      "Project Hosting",
+      "README Documentation",
+    ],
+  },
+
+  "Linux": {
+    usedIn: [
+      "Backend Development",
+      "Deployment",
+    ],
+    concepts: [
+      "CLI",
+      "Shell Commands",
+      "File Permissions",
+      "Server Environment",
+    ],
+  },
+
+  "Bash": {
+    usedIn: [
+      "Development Workflow",
+    ],
+    concepts: [
+      "Automation",
+      "Scripts",
+      "Terminal",
+    ],
+  },
+
+  "Postman": {
+    usedIn: [
+      "All Backend Projects",
+    ],
+    concepts: [
+      "API Testing",
+      "Collections",
+      "Environment Variables",
+      "Request Debugging",
+    ],
+  },
+
+  "Vercel": {
+    usedIn: [
+      "Portfolio",
+      "ThundrAI",
+      "GolfImpact",
+      "DeluluDraw",
+      "Spotify Clone",
+      "Full Stack To-Do",
+    ],
+    concepts: [
+      "Frontend Deployment",
+      "CI/CD",
+      "Environment Variables",
+    ],
+  },
+
+  "Render": {
+    usedIn: [
+      "ThundrAI",
+      "DeluluDraw",
+      "InsightForge",
+      "AI Call Agent",
+    ],
+    concepts: [
+      "Backend Deployment",
+      "Node Services",
+      "Environment Configuration",
+    ],
+  },
+
+  "Java": {
+    usedIn: [
+      "DSA",
+      "Problem Solving",
+    ],
+    concepts: [
+      "OOP",
+      "Collections",
+      "Exception Handling",
+    ],
+  },
+
+  "C++": {
+    usedIn: [
+      "DSA",
+      "Competitive Programming",
+    ],
+    concepts: [
+      "Data Structures",
+      "Algorithms",
+      "STL",
+      "Dynamic Programming",
+    ],
+  },
 };
 
 const getDetailData = (name) => {
