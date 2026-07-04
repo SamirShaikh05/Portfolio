@@ -89,7 +89,7 @@ function About() {
     const allTech = [...tech1, ...tech2];
 
     return (
-        <SectionFlow id="about" className="-scroll-mt-4 min-h-[85vh] py-20 px-6">
+        <SectionFlow id="about" className="-scroll-mt-15 min-h-[85vh] py-20 px-6">
             
             {/* 1. Background Wrapper: Spans full screen width and exact parent component layout height */}
             <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none overflow-hidden z-0">
