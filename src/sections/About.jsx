@@ -96,7 +96,7 @@ function About() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-h-screen flex items-center justify-center">
                     <Motion.div
                         animate={{ 
-                            opacity: showAll ? 0.3 : 0.8,
+                            opacity: showAll ? 0.45 : 0.8,
                             scale: showAll ? 1.15 : 1
                         }}
                         transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
@@ -105,7 +105,7 @@ function About() {
                         {/* Magic Rings */}
                         <Motion.div
                             className="absolute inset-0 flex items-center justify-center w-full h-full"
-                            animate={{ scale: showAll ? 1.25 : 1 }}
+                            animate={{ scale: showAll ? 1.15 : 1 }}
                             transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
                         >
                             <MagicRings
