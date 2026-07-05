@@ -9,9 +9,9 @@ import {
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import TechTriangle from '../components/layout/TechTriangle.jsx';
-import MagicRings from '../components/ui/MagicRings.jsx'
-import Orb from '../components/ui/Orb.jsx'
-import {VIEWPORT, DURATION, EASE, slideFromLeft, slideFromRight, fadeUp} from '../motion/index.js'
+import MagicRings from '../components/ui/MagicRings.jsx';
+import Orb from '../components/ui/Orb.jsx';
+import { VIEWPORT, DURATION, EASE, slideFromLeft, slideFromRight, fadeUp } from '../motion/index.js';
 import SectionFlow from "../components/layout/SectionFlow.jsx";
 import SectionHeading from "../components/layout/SectionHeading.jsx";
 
@@ -20,7 +20,7 @@ function TechRail({ tech, direction = "left", duration = 35 }) {
     const isReverse = direction === "right";
 
     return (
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden py-0">
             <Motion.div
                 className="flex w-max will-change-transform"
                 initial={{ x: isReverse ? "-50%" : "0%" }}
@@ -39,10 +39,10 @@ function TechRail({ tech, direction = "left", duration = 35 }) {
                             return (
                                 <div
                                     key={`${techItem.name}-${group}-${i}`}
-                                    className="flex h-14 min-w-[150px] items-center gap-3 rounded-xl border border-white/10 bg-linear-to-br from-slate-800/80 via-slate-900/70 to-slate-950/80 px-4 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition hover:scale-105"
+                                    className="flex h-12 min-w-[145px] items-center gap-3 rounded-xl border border-white/10 bg-linear-to-br from-slate-800/80 via-slate-900/70 to-slate-950/80 px-4 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition hover:scale-105"
                                 >
-                                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
-                                        <Icon className={`h-5 w-5 ${techItem.color}`} aria-hidden="true" />
+                                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
+                                        <Icon className={`h-4.5 w-4.5 ${techItem.color}`} aria-hidden="true" />
                                     </span>
                                     <span className="truncate text-sm font-medium text-gray-200">
                                         {techItem.name}
@@ -89,20 +89,23 @@ function About() {
     const allTech = [...tech1, ...tech2];
 
     return (
-        <SectionFlow id="about" className="-scroll-mt-15 min-h-[85vh] py-20 px-6">
+        <SectionFlow id="about" className="-scroll-mt-15 min-h-[85vh] py-20 px-6 relative">
             
-            {/* 1. Background Wrapper: Spans full screen width and exact parent component layout height */}
+            {/* 1. Background Wrapper: Restored original glowness parameters with responsive layouts */}
             <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none overflow-hidden z-0">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-h-screen flex items-center justify-center">
                     <Motion.div
-                        animate={{ opacity: showAll ? 1 : 0.6 }}
-                        transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
+                        animate={{ 
+                            opacity: showAll ? 0.3 : 0.8,
+                            scale: showAll ? 1.15 : 1
+                        }}
+                        transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                         className="relative w-full h-full flex items-center justify-center"
                     >
                         {/* Magic Rings */}
                         <Motion.div
                             className="absolute inset-0 flex items-center justify-center w-full h-full"
-                            animate={{ scale: showAll ? 1.25 : 0.85 }}
+                            animate={{ scale: showAll ? 1.25 : 1 }}
                             transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
                         >
                             <MagicRings
@@ -132,7 +135,7 @@ function About() {
                         {/* Orb Background Layer */}
                         <Motion.div
                             className="absolute inset-0 flex items-center justify-center"
-                            animate={{ scale: showAll ? 1.05 : 0.95 }}
+                            animate={{ scale: showAll ? 1.05 : 0.9 }}
                             transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
                         >
                             <Orb
@@ -148,7 +151,7 @@ function About() {
             </div>
 
             {/* 2. Content Layout Structure */}
-            <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-16">
+            <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-10">
                 <SectionHeading title="About Me" />
 
                 {/* Info Cards Row */}
@@ -201,7 +204,7 @@ function About() {
                 </div>
 
                 {/* Tech Stack Component Section */}
-                <div className="flex flex-col items-center gap-4 cursor-default select-none">
+                <div className="flex flex-col items-center gap-6 cursor-default select-none">
                     <Motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={VIEWPORT} className="text-center">
                         <h3 className="text-2xl font-semibold text-gray-100 mb-3">Tech Stack</h3>
                         <p className="text-gray-400 text-sm">Technologies I work with to build scalable and modern applications</p>
@@ -216,17 +219,17 @@ function About() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -28, filter: "blur(6px)" }}
                                 transition={{ duration: DURATION.base, ease: EASE.out }}
-                                className="w-full flex flex-col gap-4"
+                                className="w-full flex flex-col gap-3"
                             >
                                 <div className="relative w-full overflow-hidden">
                                     <TechRail tech={tech1} duration={38} />
-                                    <div className="absolute left-0 top-0 h-full w-28 bg-linear-to-r from-[#0B0F19] to-transparent" />
-                                    <div className="absolute right-0 top-0 h-full w-28 bg-linear-to-l from-[#0B0F19] to-transparent" />
+                                    <div className="absolute left-0 top-0 h-full w-28 bg-linear-to-r from-[#0B0F19] to-transparent pointer-events-none" />
+                                    <div className="absolute right-0 top-0 h-full w-28 bg-linear-to-l from-[#0B0F19] to-transparent pointer-events-none" />
                                 </div>
                                 <div className="relative w-full overflow-hidden">
                                     <TechRail tech={tech2} direction="right" duration={42} />
-                                    <div className="absolute left-0 top-0 h-full w-28 bg-linear-to-r from-[#0B0F19] to-transparent" />
-                                    <div className="absolute right-0 top-0 h-full w-28 bg-linear-to-l from-[#0B0F19] to-transparent" />
+                                    <div className="absolute left-0 top-0 h-full w-28 bg-linear-to-r from-[#0B0F19] to-transparent pointer-events-none" />
+                                    <div className="absolute right-0 top-0 h-full w-28 bg-linear-to-l from-[#0B0F19] to-transparent pointer-events-none" />
                                 </div>
                                 <div className="mt-6 flex justify-center">
                                     <Motion.button
@@ -243,13 +246,15 @@ function About() {
                         ) : (
                             <Motion.div
                                 key="triangle"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 20, filter: "blur(4px)" }}
                                 transition={{ duration: DURATION.base, ease: EASE.out }}
-                                className="flex w-full flex-col items-center gap-6"
+                                className="flex w-full flex-col items-center gap-8 relative z-20"
                             >
+                                {/* Direct rendering of custom component cleanly isolated */}
                                 <TechTriangle tech={allTech} />
+                                
                                 <Motion.button
                                     onClick={() => setShowAll(false)}
                                     whileHover={{ scale: 1.03, borderColor: "rgba(59,130,246,0.35)" }}
