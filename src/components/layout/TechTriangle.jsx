@@ -77,11 +77,11 @@ function TechTriangle({ tech }) {
         >
             <div
                 aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[min(780px,96vw)] -translate-x-1/2 -translate-y-1/2 rounded-full"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[460px] w-[min(780px,96vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/[0.03] blur-[80px]"
             />
             <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-8 top-0 h-px"
+                className="pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-blue-500/15 to-transparent"
             />
 
             {/* Increased gaps from gap-3/gap-4 to gap-5/gap-6 for better spacing */}
@@ -101,21 +101,24 @@ function TechTriangle({ tech }) {
                                     key={item.name}
                                     variants={cardVariants}
                                     whileHover={{
-                                        y: -5,
-                                        scale: 1.05,
-                                        borderColor: "rgba(34,211,238,0.42)",
-                                        boxShadow: "0 18px 42px rgba(8,145,178,0.16)",
+                                        y: -6,
+                                        scale: 1.06,
+                                        borderColor: "rgba(59,130,246,0.35)",
+                                        boxShadow: "0 20px 50px rgba(59,130,246,0.12), 0 8px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
                                     }}
-                                    className="group relative flex h-24 w-24 shrink-0 flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-white/10 bg-linear-to-br from-slate-800/80 via-slate-900/70 to-slate-950/80 p-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-colors duration-300"
+                                    className="group relative flex h-[6.5rem] w-[6.5rem] shrink-0 flex-col items-center justify-center gap-2.5 overflow-hidden rounded-2xl border border-white/[0.08] bg-linear-to-br from-slate-800/50 via-slate-900/60 to-slate-950/70 p-3 text-center shadow-[0_4px_20px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl transition-all duration-300"
                                 >
-                                    <span className="absolute inset-x-2 top-2 h-px bg-linear-to-r from-transparent via-cyan-300/45 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04]">
+                                    {/* Top accent shine */}
+                                    <span className="absolute inset-x-2 top-2 h-px bg-linear-to-r from-transparent via-blue-400/35 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                    {/* Bottom accent glow */}
+                                    <span className="absolute inset-x-3 -bottom-px h-px bg-linear-to-r from-transparent via-cyan-400/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                                         <Icon
-                                            className={`h-6 w-6 shrink-0 transition-transform duration-300 group-hover:scale-110 ${item.color}`}
+                                            className={`h-6 w-6 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(147,197,253,0.4)] ${item.color}`}
                                             aria-hidden="true"
                                         />
                                     </span>
-                                    <span className="w-full truncate text-xs font-semibold text-gray-200 px-0.5">
+                                    <span className="w-full truncate text-xs font-semibold text-gray-300 px-0.5 transition-colors duration-300 group-hover:text-gray-100">
                                         {item.name}
                                     </span>
                                 </Motion.div>

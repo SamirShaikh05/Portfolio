@@ -96,8 +96,8 @@ function About() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-h-screen flex items-center justify-center">
                     <Motion.div
                         animate={{ 
-                            opacity: showAll ? 0.45 : 0.8,
-                            scale: showAll ? 1.15 : 1
+                            opacity: showAll ? 0.65 : 0.8,
+                            scale: showAll ? 1.08 : 1
                         }}
                         transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                         className="relative w-full h-full flex items-center justify-center"
@@ -252,8 +252,14 @@ function About() {
                                 transition={{ duration: DURATION.base, ease: EASE.out }}
                                 className="flex w-full flex-col items-center gap-8 relative z-20"
                             >
-                                {/* Direct rendering of custom component cleanly isolated */}
-                                <TechTriangle tech={allTech} />
+                                {/* Glassmorphic container for expanded tech stack */}
+                                <div className="relative w-full overflow-hidden rounded-3xl border border-white/[0.06] bg-[linear-gradient(to_bottom,rgba(255,255,255,0.025),transparent_60%)] p-4 sm:p-8 backdrop-blur-sm">
+                                    {/* Decorative radial glow at top */}
+                                    <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(ellipse_60%_35%_at_50%_0%,rgba(59,130,246,0.06),transparent)]" />
+                                    {/* Decorative radial glow at bottom */}
+                                    <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(ellipse_50%_30%_at_50%_100%,rgba(6,182,212,0.04),transparent)]" />
+                                    <TechTriangle tech={allTech} />
+                                </div>
                                 
                                 <Motion.button
                                     onClick={() => setShowAll(false)}

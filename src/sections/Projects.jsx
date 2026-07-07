@@ -139,7 +139,11 @@ function Projects() {
                         <button
                             key={f.value}
                             onClick={() => setActiveFilter(f.value)}
-                            className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-featured duration-200
+                            className={`rounded-full
+border
+backdrop-blur-xl
+
+shadow-[inset_0_1px_0_rgba(255,255,255,.08)] px-4 py-1.5 text-xs font-medium transition-featured duration-200
                                 ${activeFilter === f.value
                                     ? "border-blue-500/40 bg-blue-500/15 text-blue-300 shadow-sm shadow-blue-900/40"
                                     : "border-gray-700 bg-transparent text-gray-400 hover:border-gray-500 hover:text-gray-200"
