@@ -32,7 +32,7 @@ function Projects() {
     return (
         <SectionFlow
             id="projects"
-            className="-scroll-mt-15 px-6 py-30"
+            className="-scroll-mt-23 px-6 py-30"
             background={
                 <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-40">
                     <div className="absolute left-1/2 top-1/3 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-blue-600/[0.04] blur-[100px]" />

@@ -33,7 +33,7 @@ function Contact() {
   return (
     <SectionFlow
       id="contact"
-      className="-scroll-mt-16 px-6 py-24 sm:py-28"
+      className="-scroll-mt-17 px-6 py-24 sm:py-28"
       background={
         <div className="pointer-events-none absolute inset-0 z-0 opacity-70">
           <Strands

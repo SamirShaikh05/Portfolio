@@ -21,14 +21,20 @@ function About() {
                     <AboutIntroCard
                         title="Who I Am"
                         direction="left"
-                        body="I'm a Full-Stack Developer and B.Tech student who enjoys turning ideas into scalable digital products. Having solved over 500+ DSA problems, I approach development with a strong foundation in problem-solving, clean code, and continuous learning."
-                        badges={["500+ DSA Problems", "Full-Stack MERN"]}
+                        body="I'm a B.Tech student at Jamia Millia Islamia who enjoys building full-stack applications, backend systems, and real-time software. I enjoy turning complex ideas into scalable solutions. I approach software development with a focus on problem-solving, clean architecture, and continuously improving through hands-on development."
+                        badges={[
+                            "550+ DSA Solved",
+                            "LeetCode 1656",
+                        ]}
                     />
                     <AboutIntroCard
                         title="What I Do"
                         direction="right"
-                        body="I build production-ready web applications, real-time experiences, and AI-driven solutions using modern technologies like React, Node.js, Express, and MongoDB. My focus is creating software that is fast, reliable, and capable of delivering real impact at scale."
-                        badges={["4+ Production Projects", "Open to Internships"]}
+                        body="I build modern web applications using React, Node.js, Express, MongoDB, PostgreSQL, and Socket.IO, with experience in AI integrations, secure backend APIs, and real-time systems. I enjoy developing products from the ground up, focusing on scalable architecture, maintainable code, and user experiences that are both functional and polished."
+                        badges={[
+                            "Real-Time Systems",
+                            "Full-Stack Development",
+                        ]}
                     />
                 </div>
 

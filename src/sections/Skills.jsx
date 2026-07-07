@@ -52,7 +52,7 @@ export default function Skills() {
   return (
     <SectionFlow
       id="skills"
-      className="-scroll-mt-35 px-6 py-50 z-10 w-full"
+      className="-scroll-mt-40 px-6 py-50 z-10 w-full"
       background={
         <div className="absolute inset-0 z-0 opacity-70 pointer-events-none">
           <ShapeGrid
