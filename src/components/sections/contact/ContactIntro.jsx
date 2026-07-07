@@ -10,7 +10,7 @@ function ContactIntro() {
       whileInView="visible"
       viewport={VIEWPORT}
     >
-      <h2 className="max-w-xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
+      <h2 className="max-w-xl text-4xl font-display font-semibold leading-tight tracking-tight text-white sm:text-5xl">
         Let&apos;s build something
         <span className="bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> great together.</span>
       </h2>

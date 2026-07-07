@@ -13,7 +13,7 @@ function Footer() {
                 {/* Top Row: Info & Navigation */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div>
-                        <h2 className="text-lg font-semibold text-gray-200 tracking-tight">
+                        <h2 className="text-lg font-display font-semibold text-gray-200 tracking-tight">
                             Samir Jamil Shaikh
                         </h2>
                         <p className="text-gray-500 mt-1 text-xs max-w-sm leading-relaxed">

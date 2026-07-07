@@ -7,7 +7,7 @@ function TechStackSection({ showAll, onShowAll, onCollapse, techItems }) {
   return (
     <div className="flex flex-col items-center gap-6 select-none">
       <Motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={VIEWPORT} className="text-center">
-        <h3 className="mb-3 text-2xl font-semibold text-gray-100">Tech Stack</h3>
+        <h3 className="mb-3 text-2xl font-display font-semibold text-gray-100">Tech Stack</h3>
         <p className="text-sm text-gray-400">Technologies I work with to build scalable and modern applications</p>
         <div className="mx-auto mt-4 h-0.5 w-24 rounded-full bg-linear-to-r from-blue-500 to-cyan-500" />
       </Motion.div>
@@ -99,7 +99,7 @@ function TechRail({ tech, direction = "left", duration = 35 }) {
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
                     <Icon className={`h-4.5 w-4.5 ${techItem.color}`} aria-hidden="true" />
                   </span>
-                  <span className="truncate text-sm font-medium text-gray-200">{techItem.name}</span>
+                  <span className="truncate text-sm font-mono font-medium tracking-wide text-gray-200">{techItem.name}</span>
                 </div>
               );
             })}

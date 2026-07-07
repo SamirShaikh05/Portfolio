@@ -10,7 +10,7 @@ function HeroContent({ showTyping }) {
           initial={{ x: -80, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: DURATION.hero, ease: EASE.out }}
-          className="text-4xl font-semibold text-gray-100 sm:text-5xl lg:text-6xl"
+          className="text-4xl font-display font-semibold text-gray-100 sm:text-5xl lg:text-6xl"
         >
           Samir Jamil Shaikh
         </Motion.h1>
@@ -19,7 +19,7 @@ function HeroContent({ showTyping }) {
           initial={{ x: 80, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: DURATION.slow, ease: EASE.out, delay: 0.2 }}
-          className="text-2xl text-blue-500 sm:text-3xl"
+          className="text-2xl font-display font-medium text-blue-500 sm:text-3xl"
         >
           Full Stack Developer
         </Motion.h2>

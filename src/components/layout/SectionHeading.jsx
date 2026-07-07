@@ -13,7 +13,7 @@ function SectionHeading({ title, subtitle, className = "" }) {
       viewport={VIEWPORT}
       className={`text-center ${className}`}
     >
-      <h2 className="text-4xl font-semibold tracking-tight text-gray-100">
+      <h2 className="text-4xl font-display font-semibold tracking-tight text-gray-100">
         {title}
       </h2>
       <div className="mx-auto mt-3 h-0.5 w-24 rounded-full bg-linear-to-r from-blue-500 to-cyan-400" />

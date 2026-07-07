@@ -8,7 +8,7 @@ function SkillCategoryCard({ category, children }) {
       className="flex w-full flex-col gap-4"
     >
       <div className="flex flex-col px-1">
-        <h3 className="mb-1 text-lg font-medium tracking-wide text-gray-200">{category.title}</h3>
+        <h3 className="mb-1 text-lg font-display font-semibold tracking-wide text-gray-200">{category.title}</h3>
         <p className="text-xs font-light leading-relaxed text-gray-400 sm:text-sm">{category.description}</p>
       </div>
 

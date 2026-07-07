@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -18,8 +24,8 @@ body,
   overflow-x: hidden;
 }
 
-body{
-    font-family: "Inter", sans-serif;
+body {
+  font-family: var(--font-sans);
 }
 
 /* Fix Chrome / Edge autofill background */

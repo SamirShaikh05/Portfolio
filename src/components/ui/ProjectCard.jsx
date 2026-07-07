@@ -180,7 +180,7 @@ function ProjectCard({ project }) {
                             <p className="text-xs leading-relaxed text-gray-300">
                                 {project.des}
                             </p>
-                            <p className="mt-2 text-[10px] font-semibold uppercase tracking-wider text-blue-300">
+                            <p className="mt-2 text-[10px] font-mono font-semibold uppercase tracking-wider text-blue-300">
                                 {project.tech}
                             </p>
                             <button
@@ -219,11 +219,11 @@ function ProjectCard({ project }) {
                         py-3
                         backdrop-blur-xl"
                 >
-                    <h3 className="truncate text-sm font-semibold text-gray-100">
+                    <h3 className="truncate text-sm font-display font-semibold text-gray-100">
                         {project.name}
                     </h3>
                     <span
-                        className={`ml-2 shrink-0 rounded-full border px-3 py-1 text-[10px] font-semibold tracking-wide backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] ${tagStyle}`}
+                        className={`ml-2 shrink-0 rounded-full border px-3 py-1 text-[10px] font-mono font-semibold tracking-wide backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] ${tagStyle}`}
                     >
                         {tagLabel}
                     </span>

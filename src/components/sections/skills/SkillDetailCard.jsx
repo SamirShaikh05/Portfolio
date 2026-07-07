@@ -11,7 +11,7 @@ function SkillDetailCard({ techName, meta, data }) {
       style={{ position: "fixed", top: meta.top, left: meta.left }}
       className="pointer-events-none z-50 w-[280px] rounded-xl border border-gray-800/80 bg-gray-950/95 p-4.5 shadow-2xl shadow-black/90 backdrop-blur-md"
     >
-      <h4 className="mb-3 flex items-center gap-2 border-b border-gray-900 pb-2 text-sm font-semibold text-gray-100">
+      <h4 className="mb-3 flex items-center gap-2 border-b border-gray-900 pb-2 text-sm font-display font-semibold text-gray-100">
         <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
         {techName}
       </h4>
